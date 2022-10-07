@@ -1,15 +1,30 @@
 import random
 # versus mode
-#timer = 60
+# timer = 60
 
 # while timer > 0:
-operations = ['+', '-', '*', '//', ]
+character = input(
+    "Enter character you would like to select: dog1, dog2, dog3, dog4: \n")
+while character != 'dog1' and character != 'dog2' and character != 'dog3' and character != 'dog4':
+    character = input(
+        "Character does not exist, please reenter your character:")
+dog1operations = ['-', '*', '//', ]  # avoids addition
+dog2operations = ['+', '*', '//', ]  # avoid subtraction
+dog3operations = ['+', '-', '//', ]  # avoid multiplication
+dog4operations = ['+', '-', '*', ]  # avoid multiplication
 numbers1 = [1, 2, 3, 4, 5]  # note: excluded 0 bcs in division 0/5 causes error
 numbers2 = [1, 2, 3, 4, 5]
 score = 0
-for i in range(0, 3):
-    index = random.choice(operations)
-    #index = '+'
+for i in range(0, 5):
+    if (character == "Animations/dog1"):
+        index = random.choice(dog1operations)
+    if (character == "dog2"):
+        index = random.choice(dog2operations)
+    if (character == "dog3"):
+        index = random.choice(dog3operations)
+    if (character == "dog4"):
+        index = random.choice(dog4operations)
+    # index = '+'
     num1 = random.choice(numbers1)
     num2 = random.choice(numbers2)
     if index == '+':
