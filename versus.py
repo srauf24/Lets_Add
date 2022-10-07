@@ -14,7 +14,7 @@ dog3operations = ['+', '-', '//', ]  # avoid multiplication
 dog4operations = ['+', '-', '*', ]  # avoid multiplication
 numbers1 = [1, 2, 3, 4, 5]  # note: excluded 0 bcs in division 0/5 causes error
 numbers2 = [1, 2, 3, 4, 5]
-score = 0
+score = 0  # user score
 for i in range(0, 5):
     if (character == "Animations/dog1"):
         index = random.choice(dog1operations)
@@ -38,7 +38,7 @@ for i in range(0, 5):
             print("correct, you have recievd a point")
             score += 1
         if user_answer != result:
-            print("wrong, you did not recieved a point")
+            print("wrong, you did not recieved a point, your score remains the same:")
         print("score = ", score)
     if index == '-':
         result = num1 - num2
@@ -52,7 +52,7 @@ for i in range(0, 5):
             print("correct, you have recievd a point")
             score += 1
         if user_answer != result:
-            print("wrong, you did not recieved a point")
+            print("wrong, you did not recieved a point, your score remains the same:")
         print("score = ", score)
         # print(index)
     if index == '*':
@@ -67,7 +67,7 @@ for i in range(0, 5):
             print("correct, you have recievd a point")
             score += 1
         if user_answer != result:
-            print("wrong, you did not recieved a point")
+            print("wrong, you did not recieved a point, your score remains the same:")
         print("score = ", score)
     if index == '//':
         result = num1 // num2
@@ -81,6 +81,6 @@ for i in range(0, 5):
             print("correct, you have recievd a point")
             score += 1
         if user_answer != result:
-            print("wrong, you did not recieved a point")
+            print("wrong, you did not recieved a point, your score remains the same:")
         print("score = ", score)
         # print(index)
