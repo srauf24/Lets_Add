@@ -12,8 +12,9 @@ dog1operations = ['-', '*', '//', ]  # avoids addition
 dog2operations = ['+', '*', '//', ]  # avoid subtraction
 dog3operations = ['+', '-', '//', ]  # avoid multiplication
 dog4operations = ['+', '-', '*', ]  # avoid multiplication
-numbers1 = [1, 2, 3, 4, 5]  # note: excluded 0 bcs in division 0/5 causes error
-numbers2 = [1, 2, 3, 4, 5]
+# note: excluded 0 bcs in division 0/5 causes error
+numbers1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 score = 0  # user score
 for i in range(0, 5):
     if (character == "Animations/dog1"):
