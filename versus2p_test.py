@@ -136,11 +136,11 @@ def get_score(result, user_answer, score):
     return score
 
 
-def final_score_user1(score): # can be used later possibly to determine winner/losser
+def final_score_user1(score): # can be used later possibly to determine winner/losser/tiebreaker
     return score
 
 
-def final_score_user2(score): # can be used later possibll to determine winner/losser
+def final_score_user2(score): # can be used later possibll to determine winner/losser/tiebreaker
     return score
 
 
