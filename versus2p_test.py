@@ -41,13 +41,34 @@ def get_question(character, score):
         index = random.choice(dog3operations)
     if (character == "dog4"):
         index = random.choice(dog4operations)
-    index = '+'  # testing purposes
+    # index = '+'  # testing purposes
     if index == '+':
         result = num1 + num2
         user_answer = int(input(f"What is the sum of {num1} and {num2}? "))
+        print(f"Your answer should be {result}")
+        score = get_score(result, user_answer, score)
+        print(f"your score is {score}")
+    if index == '-':
+        result = num1 - num2
+        user_answer = int(
+            input(f"What is the difference of {num1} and {num2}? "))
+        print(f"Your answer should be {result}")
+        score = get_score(result, user_answer, score)
+        print(f"your score is {score}")
+    if index == '*':
+        result = num1 * num2
+        user_answer = int(input(f"What is the product of {num1} and {num2}? "))
+        print(f"Your answer should be {result}")
+        score = get_score(result, user_answer, score)
+        print(f"your score is {score}")
+    else:  # if index == '*':
+        result = num1 // num2
+        user_answer = int(input(f"What {num1} divided by {num2}? "))
+        print(f"Your answer should be {result}")
         score = get_score(result, user_answer, score)
         print(f"your score is {score}")
     # also return result, user_answer
+    # returns question infomration & user answer & user score
     question_info = [num1, num2, index, result, user_answer, score]
     if my_timer == 0:
         print("\nTime is up!")
@@ -59,7 +80,7 @@ def get_score(result, user_answer, score):
     if result == user_answer:
         score += 1
     else:
-        pass
+        score = score
     return score
 
 
@@ -67,7 +88,6 @@ def game_start():
     score = 0
     character = input(
         "User A enter character you would like to select: dog1, dog2, dog3, dog4: \n")
-
     while character != 'dog1' and character != 'dog2' and character != 'dog3' and character != 'dog4':
         character = input(
             "Character does not exist, please reenter your character:")
@@ -75,10 +95,11 @@ def game_start():
     while my_timer > 0:
         # for i in range(0, 5):
         question = get_question(character, score)
-        score = get_score(question[3], question[4], score)
+        score = question[5]
         # index = '+'
 
         # print(index)
+    #score = get_score(question[3], question[4], score)
     print(f"Your final score is {score}")
 
 
