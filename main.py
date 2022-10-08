@@ -39,6 +39,9 @@ startScreen.add(background)
 # Start Screen
 start = True
 
+# Selecting Mode
+playerMode = False
+
 # Setting Screen
 setting = False
 displaySettingText = font.render("SETTINGS", False, (0,0,0))
@@ -75,7 +78,7 @@ while True:
 				if startText.isOver(pos):
 					print("Start is pressed")
 					start = False
-					choosing = True
+					playerMode = True
 				if settingText.isOver(pos):
 					print("Settings is pressed")
 					setting = True
@@ -120,6 +123,24 @@ while True:
 		returnText.draw(screen,(255,255,0))
 		pygame.display.flip()
 
+
+
+	while(playerMode):
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				sys.exit()
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_0:
+					playerMode = False
+					choosing = True
+		pygame.display.flip()
+		screen.fill((0,255,0))
+		screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+		clock.tick(240)
+
+
+
 	while(choosing):
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -135,7 +156,7 @@ while True:
 		screen.fill((0,0,255))
 		screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
 		moving_sprites.draw(screen)
-		moving_sprites.update(0.05)
+		moving_sprites.update(0.15)
 		sleepFox.idle()
 		goldieSit.idle()
 		silverSit.idle()
