@@ -20,8 +20,10 @@ def countdown():
 
 countdown_thread = threading.Thread(target=countdown)
 
- ################## get question function for user A ###################
-def get_question(character, score): 
+################## get question function for user A ###################
+
+
+def get_question(character, score):
     dog1operations = ['-', '*', '//', ]  # avoids addition
     dog2operations = ['+', '*', '//', ]  # avoid subtraction
     dog3operations = ['+', '-', '//', ]  # avoid multiplication
@@ -75,6 +77,8 @@ def get_question(character, score):
     # function for user2
 
  ################### get question function for user B ##################
+
+
 def get_question2(character, score):
     dog1operations = ['-', '*', '//', ]  # avoids addition
     dog2operations = ['+', '*', '//', ]  # avoid subtraction
@@ -136,11 +140,13 @@ def get_score(result, user_answer, score):
     return score
 
 
-def final_score_user1(score): # can be used later possibly to determine winner/losser/tiebreaker
+# can be used later possibly to determine winner/losser/tiebreaker
+def final_score_user1(score):
     return score
 
 
-def final_score_user2(score): # can be used later possibll to determine winner/losser/tiebreaker
+# can be used later possibll to determine winner/losser/tiebreaker
+def final_score_user2(score):
     return score
 
 
