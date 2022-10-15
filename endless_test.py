@@ -20,14 +20,14 @@ def get_question(character, score, lives):
         index = random.choice(dog3operations)
     if character == "dog4":
         index = random.choice(dog4operations)
-    # index = '+'  # testing purposes
+    index = '+'  # testing purposes
     if index == '+':
         result = num1 + num2
         user_answer = int(input(f"What is the sum of {num1} and {num2}? "))
         print(f"Your answer should be {result}")
-        score = get_score(result, user_answer, score, lives)
-        print(f"your score is {score[0]}")
-        print(f"You have {score[1]} lives")
+        score_output = get_score(result, user_answer, score, lives)
+        print(f"your score is {score_output[0]}")
+        print(f"You have {score_output[1]} lives")
    # if index == '-':
    #     result = num1 - num2
    #     user_answer = int(
@@ -61,9 +61,9 @@ def get_score(result, user_answer, score, lives):
     if result == user_answer:
         score += 1
     else:
-        score = score
         lives -= 1
-    return [score, lives]
+    output = [score, lives]
+    return output
 
 
 # can be used later possibly to determine winner/losser/tiebreaker
