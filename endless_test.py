@@ -20,7 +20,7 @@ def get_question(character, score, lives):
         index = random.choice(dog3operations)
     if character == "dog4":
         index = random.choice(dog4operations)
-    index = '+'  # testing purposes
+    # index = '+'  # testing purposes
     if index == '+':
         result = num1 + num2
         user_answer = int(input(f"What is the sum of {num1} and {num2}? "))
@@ -29,28 +29,29 @@ def get_question(character, score, lives):
         user_lives = get_lives(result, user_answer, lives)
         print(f"your score is {user_score}")
         print(f"You have {user_lives} lives")
-   # if index == '-':
-   #     result = num1 - num2
-   #     user_answer = int(
-     #       input(f"What is the difference of {num1} and {num2}? "))
-    #    print(f"Your answer should be {result}")
-    #    score = get_score(result, user_answer, score, lives)
-    #    print(f"your score is {score[0]}")
-    #    print(f"You have {score[1]} lives")
-    # if index == '*':
-    #    result = num1 * num2
-    #   user_answer = int(input(f"What is the product of {num1} and {num2}? "))
-     #   print(f"Your answer should be {result}")
-      #  score = get_score(result, user_answer, score, lives)
-      #  print(f"your score is {score[0]}")
-      #  print(f"You have {score[1]} lives")
-   # else:  # if index == '*':
-    #    result = num1 // num2
-    #    user_answer = int(input(f"What {num1} divided by {num2}? "))
-    #    print(f"Your answer should be {result}")
-    #    score = get_score(result, user_answer, score, lives)
-    #    print(f"your score is {score[0]}")
-    #   print(f"You have {score[1]} lives")
+    if index == '-':
+        result = num1 - num2
+        user_answer = int(
+            input(f"What is the difference of {num1} and {num2}? "))
+        print(f"Your answer should be {result}")
+        user_score = get_score(result, user_answer, score)
+        user_lives = get_lives(result, user_answer, lives)
+        print(f"your score is {user_score}")
+        print(f"You have {user_lives} lives")
+    if index == '*':
+        result = num1 * num2
+        user_answer = int(input(f"What is the product of {num1} and {num2}? "))
+        user_score = get_score(result, user_answer, score)
+        user_lives = get_lives(result, user_answer, lives)
+        print(f"your score is {user_score}")
+        print(f"You have {user_lives} lives")
+    else:  # if index == '*':
+        result = num1 // num2
+        user_answer = int(input(f"What {num1} divided by {num2}? "))
+        user_score = get_score(result, user_answer, score)
+        user_lives = get_lives(result, user_answer, lives)
+        print(f"your score is {user_score}")
+        print(f"You have {user_lives} lives")
     # also return result, user_answer
     # returns question information & user answer & user score
     question_info = [num1, num2, index, result,
