@@ -28,28 +28,28 @@ def get_question(character, score, lives):
         score = get_score(result, user_answer, score, lives)
         print(f"your score is {score[0]}")
         print(f"You have {score[1]} lives")
-    if index == '-':
-        result = num1 - num2
-        user_answer = int(
-            input(f"What is the difference of {num1} and {num2}? "))
-        print(f"Your answer should be {result}")
-        score = get_score(result, user_answer, score, lives)
-        print(f"your score is {score[0]}")
-        print(f"You have {score[1]} lives")
-    if index == '*':
-        result = num1 * num2
-        user_answer = int(input(f"What is the product of {num1} and {num2}? "))
-        print(f"Your answer should be {result}")
-        score = get_score(result, user_answer, score, lives)
-        print(f"your score is {score[0]}")
-        print(f"You have {score[1]} lives")
-    else:  # if index == '*':
-        result = num1 // num2
-        user_answer = int(input(f"What {num1} divided by {num2}? "))
-        print(f"Your answer should be {result}")
-        score = get_score(result, user_answer, score, lives)
-        print(f"your score is {score[0]}")
-        print(f"You have {score[1]} lives")
+   # if index == '-':
+   #     result = num1 - num2
+   #     user_answer = int(
+     #       input(f"What is the difference of {num1} and {num2}? "))
+    #    print(f"Your answer should be {result}")
+    #    score = get_score(result, user_answer, score, lives)
+    #    print(f"your score is {score[0]}")
+    #    print(f"You have {score[1]} lives")
+    # if index == '*':
+    #    result = num1 * num2
+    #   user_answer = int(input(f"What is the product of {num1} and {num2}? "))
+     #   print(f"Your answer should be {result}")
+      #  score = get_score(result, user_answer, score, lives)
+      #  print(f"your score is {score[0]}")
+      #  print(f"You have {score[1]} lives")
+   # else:  # if index == '*':
+    #    result = num1 // num2
+    #    user_answer = int(input(f"What {num1} divided by {num2}? "))
+    #    print(f"Your answer should be {result}")
+    #    score = get_score(result, user_answer, score, lives)
+    #    print(f"your score is {score[0]}")
+    #   print(f"You have {score[1]} lives")
     # also return result, user_answer
     # returns question information & user answer & user score
     question_info = [num1, num2, index, result, user_answer, score, lives]
