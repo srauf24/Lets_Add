@@ -1,6 +1,6 @@
 import random
 from time import *
-
+from endless_score import update_endless
 
 def get_question(character, score, lives):
     dog1operations = ['-', '*', '//', ]  # avoids addition
@@ -98,6 +98,7 @@ def game_start():
     # score = get_score(question[3], question[4], score)
     print(f"User A, your final score is {score}")
     user1_finalscore = final_score_user1(score)
+    update_endless(score)
 
     ###################### User 2 turn #########################
 
