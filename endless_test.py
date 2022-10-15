@@ -2,8 +2,7 @@ import random
 from time import *
 
 
-
-def get_question(character, score):
+def get_question(character, score, lives):
     dog1operations = ['-', '*', '//', ]  # avoids addition
     dog2operations = ['+', '*', '//', ]  # avoid subtraction
     dog3operations = ['+', '-', '//', ]  # avoid multiplication
@@ -28,6 +27,7 @@ def get_question(character, score):
         print(f"Your answer should be {result}")
         score = get_score(result, user_answer, score, lives)
         print(f"your score is {score[0]}")
+        print(f"You have {score[1]} lives")
     if index == '-':
         result = num1 - num2
         user_answer = int(
@@ -35,31 +35,26 @@ def get_question(character, score):
         print(f"Your answer should be {result}")
         score = get_score(result, user_answer, score, lives)
         print(f"your score is {score[0]}")
+        print(f"You have {score[1]} lives")
     if index == '*':
         result = num1 * num2
         user_answer = int(input(f"What is the product of {num1} and {num2}? "))
         print(f"Your answer should be {result}")
         score = get_score(result, user_answer, score, lives)
         print(f"your score is {score[0]}")
+        print(f"You have {score[1]} lives")
     else:  # if index == '*':
         result = num1 // num2
         user_answer = int(input(f"What {num1} divided by {num2}? "))
         print(f"Your answer should be {result}")
         score = get_score(result, user_answer, score, lives)
         print(f"your score is {score[0]}")
+        print(f"You have {score[1]} lives")
     # also return result, user_answer
     # returns question information & user answer & user score
-    question_info = [num1, num2, index, result, user_answer, score]
-    if my_timer == 0:
-        print("\nTime is up!")
-        return question_info
+    question_info = [num1, num2, index, result, user_answer, score, lives]
     return question_info
     # function for user2
-
- ################### get question function for user B ##################
-
-
-
 
 
 def get_score(result, user_answer, score, lives):
@@ -67,8 +62,8 @@ def get_score(result, user_answer, score, lives):
         score += 1
     else:
         score = score
-        lives-=1
-    return [score,lives]
+        lives -= 1
+    return [score, lives]
 
 
 # can be used later possibly to determine winner/losser/tiebreaker
@@ -84,11 +79,11 @@ def game_start():
     while character != 'dog1' and character != 'dog2' and character != 'dog3' and character != 'dog4':
         character = input(
             "Character does not exist, please re-enter your character: \n")
-    countdown_thread.start()
-    while my_timer > 0:
+    while lives > 0:
         # for i in range(0, 5):
         question = get_question(character, score, lives)
         score = question[5]
+        lives = question[6]
         # index = '+'
 
         # print(index)
@@ -99,6 +94,4 @@ def game_start():
     ###################### User 2 turn #########################
 
 
-
 game_start()
-game_start2()
