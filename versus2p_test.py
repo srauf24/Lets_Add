@@ -33,13 +33,13 @@ def get_question(character, score):
     numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     num1 = random.choice(numbers1)
     num2 = random.choice(numbers2)
-    if (character == "dog1"):
+    if character == "dog1":
         index = random.choice(dog1operations)
-    if (character == "dog2"):
+    if character == "dog2":
         index = random.choice(dog2operations)
-    if (character == "dog3"):
+    if character == "dog3":
         index = random.choice(dog3operations)
-    if (character == "dog4"):
+    if character == "dog4":
         index = random.choice(dog4operations)
     # index = '+'  # testing purposes
     if index == '+':
@@ -68,7 +68,7 @@ def get_question(character, score):
         score = get_score(result, user_answer, score)
         print(f"your score is {score}")
     # also return result, user_answer
-    # returns question infomration & user answer & user score
+    # returns question information & user answer & user score
     question_info = [num1, num2, index, result, user_answer, score]
     if my_timer == 0:
         print("\nTime is up!")
@@ -145,7 +145,7 @@ def final_score_user1(score):
     return score
 
 
-# can be used later possibll to determine winner/losser/tiebreaker
+# can be used later possibly to determine winner/losser/tiebreaker
 def final_score_user2(score):
     return score
 
@@ -156,7 +156,7 @@ def game_start():
         "User A enter character you would like to select: dog1, dog2, dog3, dog4: \n")
     while character != 'dog1' and character != 'dog2' and character != 'dog3' and character != 'dog4':
         character = input(
-            "Character does not exist, please reenter your character: \n")
+            "Character does not exist, please re-enter your character: \n")
     countdown_thread.start()
     while my_timer > 0:
         # for i in range(0, 5):

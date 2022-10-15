@@ -1,6 +1,7 @@
 import random
 from time import *
 import threading
+from versus_score import update_versus
 # versus mode
 # timer = 60
 
@@ -35,7 +36,7 @@ character = input(
     "User A enter character you would like to select: dog1, dog2, dog3, dog4: \n")
 while character != 'dog1' and character != 'dog2' and character != 'dog3' and character != 'dog4':
     character = input(
-        "Character does not exist, please reenter your character:")
+        "Character does not exist, please re-enter your character:")
 dog1operations = ['-', '*', '//', ]  # avoids addition
 dog2operations = ['+', '*', '//', ]  # avoid subtraction
 dog3operations = ['+', '-', '//', ]  # avoid multiplication
@@ -47,13 +48,13 @@ score = 0  # user score
 countdown_thread.start()
 while my_timer > 0:
     # for i in range(0, 5):
-    if (character == "dog1"):
+    if character == "dog1":
         index = random.choice(dog1operations)
-    if (character == "dog2"):
+    if character == "dog2":
         index = random.choice(dog2operations)
-    if (character == "dog3"):
+    if character == "dog3":
         index = random.choice(dog3operations)
-    if (character == "dog4"):
+    if character == "dog4":
         index = random.choice(dog4operations)
     # index = '+'
     num1 = random.choice(numbers1)
@@ -66,11 +67,11 @@ while my_timer > 0:
         print(
             f"the answer should be {result} and the user entered {user_answer}")
         if user_answer == result:
-            print("correct, you have recievd a point")
+            print("Correct, you have received a point!")
             score += 1
         if user_answer != result:
             print(
-                "wrong, you did not recieved a point, your score remains the same:")
+                "Wrong, you did not receive a point, your score remains the same:")
         print("score = ", score)
         if my_timer == 0:
             print("\nTime is up!")
@@ -80,15 +81,15 @@ while my_timer > 0:
         user_answer = int(
             input(f"What is the difference of {num1} and {num2}? "))
         print(
-            f"numbers1: {num1} numbers2:  {num2} should equal result: {result}")
+            f"numbers1: {num1} numbers2: {num2} should equal result: {result}")
         print(
             f"the answer should be {result} and the user entered {user_answer}")
         if user_answer == result:
-            print("correct, you have recievd a point")
+            print("Correct, you have received a point!")
             score += 1
         if user_answer != result:
             print(
-                "wrong, you did not recieved a point, your score remains the same:")
+                "Wrong, you did not receive a point, your score remains the same:")
         print("score = ", score)
         if my_timer == 0:
             print("\nTime is up!")
@@ -103,11 +104,11 @@ while my_timer > 0:
         print(
             f"the answer should be {result} and the user entered {user_answer}")
         if user_answer == result:
-            print("correct, you have recievd a point")
+            print("Correct, you have received a point!")
             score += 1
         if user_answer != result:
             print(
-                "wrong, you did not recieved a point, your score remains the same:")
+                "Wrong, you did not receive a point, your score remains the same:")
         print("score = ", score)
         if my_timer == 0:
             print("\nTime is up!")
@@ -121,11 +122,11 @@ while my_timer > 0:
         print(
             f"the answer should be {result} and the user entered {user_answer}")
         if user_answer == result:
-            print("correct, you have recievd a point")
+            print("Correct, you have received a point!")
             score += 1
         if user_answer != result:
             print(
-                "wrong, you did not recieved a point, your score remains the same:")
+                "Wrong, you did not receive a point, your score remains the same:")
         print("score = ", score)
         if my_timer == 0:
             print("\nTime is up!")
@@ -149,13 +150,13 @@ score2 = 0  # user score
 countdown2_thread.start()
 while my_timer2 > 0:
     # for i in range(0, 5):
-    if (character == "dog1"):
+    if character == "dog1":
         index = random.choice(dog1operations)
-    if (character == "dog2"):
+    if character == "dog2":
         index = random.choice(dog2operations)
-    if (character == "dog3"):
+    if character == "dog3":
         index = random.choice(dog3operations)
-    if (character == "dog4"):
+    if character == "dog4":
         index = random.choice(dog4operations)
     # index = '+'
     num1 = random.choice(numbers1)
@@ -168,12 +169,12 @@ while my_timer2 > 0:
         print(
             f"the answer should be {result} and the user entered {user_answer}")
         if user_answer == result:
-            print("correct, you have recievd a point")
+            print("Correct, you have received a point!")
             score2 += 1
         if user_answer != result:
             print(
-                "wrong, you did not recieved a point, your score remains the same:")
-        print("score = ", score)
+                "wrong, you did not received a point, your score remains the same:")
+        print("score = ", score2)
         if my_timer2 == 0:
             print("\nTime is up!")
             break
@@ -186,12 +187,12 @@ while my_timer2 > 0:
         print(
             f"the answer should be {result} and the user entered {user_answer}")
         if user_answer == result:
-            print("correct, you have recievd a point")
+            print("Correct, you have received a point!")
             score2 += 1
         if user_answer != result:
             print(
-                "wrong, you did not recieved a point, your score remains the same:")
-        print("score = ", score)
+                "Wrong, you did not receive a point, your score remains the same:")
+        print("score = ", score2)
         if my_timer2 == 0:
             print("\nTime is up!")
             break
@@ -205,12 +206,12 @@ while my_timer2 > 0:
         print(
             f"the answer should be {result} and the user entered {user_answer}")
         if user_answer == result:
-            print("correct, you have recievd a point")
+            print("Correct, you have received a point!")
             score2 += 1
         if user_answer != result:
             print(
-                "wrong, you did not recieved a point, your score remains the same:")
-        print("score = ", score)
+                "Wrong, you did not receive a point, your score remains the same:")
+        print("score = ", score2)
         if my_timer2 == 0:
             print("\nTime is up!")
             break
@@ -223,12 +224,12 @@ while my_timer2 > 0:
         print(
             f"the answer should be {result} and the user entered {user_answer}")
         if user_answer == result:
-            print("correct, you have recievd a point")
+            print("Correct, you have received a point!")
             score2 += 1
         if user_answer != result:
             print(
-                "wrong, you did not recieved a point, your score remains the same:")
-        print("score = ", score)
+                "Wrong, you did not receive a point, your score remains the same:")
+        print("score = ", score2)
         if my_timer2 == 0:
             print("\nTime is up!")
             break
@@ -236,6 +237,9 @@ while my_timer2 > 0:
 print(f"Your final score is {score2}")
 print(f"User A scored {score} and user B scored {score2}")
 if score > score2:
-    print("User A has been vitorious and user B has loss")
+    print("User A has been victorious and user B has loss")
+    update_versus(score)
 else:
-    print("User B has been vitorious and user A has loss")
+    print("User B has been victorious and user A has loss")
+    update_versus(score2)
+

@@ -1,5 +1,6 @@
 import random
 from time import *
+from endless_score import update_endless
 import threading
 
 def endlessmode():
@@ -100,3 +101,4 @@ def endlessmode():
                 break
         # print(index)
     print(f"Your final score is {score}")
+    update_endless(score)
