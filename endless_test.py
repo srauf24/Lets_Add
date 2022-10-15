@@ -25,37 +25,37 @@ def get_question(character, score, lives):
         result = num1 + num2
         user_answer = int(input(f"What is the sum of {num1} and {num2}? "))
         print(f"Your answer should be {result}")
-        user_score = get_score(result, user_answer, score)
-        user_lives = get_lives(result, user_answer, lives)
-        print(f"your score is {user_score}")
+        score = get_score(result, user_answer, score)
+        lives = get_lives(result, user_answer, lives)
+        print(f"your score is {score}")
         print(f"You have {user_lives} lives")
     if index == '-':
         result = num1 - num2
         user_answer = int(
             input(f"What is the difference of {num1} and {num2}? "))
         print(f"Your answer should be {result}")
-        user_score = get_score(result, user_answer, score)
-        user_lives = get_lives(result, user_answer, lives)
-        print(f"your score is {user_score}")
+        score = get_score(result, user_answer, score)
+        lives = get_lives(result, user_answer, lives)
+        print(f"your score is {score}")
         print(f"You have {user_lives} lives")
     if index == '*':
         result = num1 * num2
         user_answer = int(input(f"What is the product of {num1} and {num2}? "))
-        user_score = get_score(result, user_answer, score)
-        user_lives = get_lives(result, user_answer, lives)
-        print(f"your score is {user_score}")
+        score = get_score(result, user_answer, score)
+        lives = get_lives(result, user_answer, lives)
+        print(f"your score is {score}")
         print(f"You have {user_lives} lives")
     else:  # if index == '*':
         result = num1 // num2
         user_answer = int(input(f"What {num1} divided by {num2}? "))
-        user_score = get_score(result, user_answer, score)
-        user_lives = get_lives(result, user_answer, lives)
-        print(f"your score is {user_score}")
+        score = get_score(result, user_answer, score)
+        lives = get_lives(result, user_answer, lives)
+        print(f"your score is {score}")
         print(f"You have {user_lives} lives")
     # also return result, user_answer
     # returns question information & user answer & user score
     question_info = [num1, num2, index, result,
-                     user_answer, user_score, user_lives]
+                     user_answer, score, lives]
     return question_info
     # function for user2
 
