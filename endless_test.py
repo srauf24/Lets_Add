@@ -2,6 +2,7 @@ import random
 from time import *
 from endless_score import update_endless
 
+
 def get_question(character, score, lives):
     dog1operations = ['-', '*', '//', ]  # avoids addition
     dog2operations = ['+', '*', '//', ]  # avoid subtraction
@@ -28,7 +29,7 @@ def get_question(character, score, lives):
         score = get_score(result, user_answer, score)
         lives = get_lives(result, user_answer, lives)
         print(f"your score is {score}")
-        print(f"You have {user_lives} lives")
+        print(f"You have {lives} lives")
     if index == '-':
         result = num1 - num2
         user_answer = int(
@@ -37,21 +38,21 @@ def get_question(character, score, lives):
         score = get_score(result, user_answer, score)
         lives = get_lives(result, user_answer, lives)
         print(f"your score is {score}")
-        print(f"You have {user_lives} lives")
+        print(f"You have {lives} lives")
     if index == '*':
         result = num1 * num2
         user_answer = int(input(f"What is the product of {num1} and {num2}? "))
         score = get_score(result, user_answer, score)
         lives = get_lives(result, user_answer, lives)
         print(f"your score is {score}")
-        print(f"You have {user_lives} lives")
+        print(f"You have {lives} lives")
     else:  # if index == '*':
         result = num1 // num2
         user_answer = int(input(f"What {num1} divided by {num2}? "))
         score = get_score(result, user_answer, score)
         lives = get_lives(result, user_answer, lives)
         print(f"your score is {score}")
-        print(f"You have {user_lives} lives")
+        print(f"You have {lives} lives")
     # also return result, user_answer
     # returns question information & user answer & user score
     question_info = [num1, num2, index, result,
