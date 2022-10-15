@@ -25,9 +25,10 @@ def get_question(character, score, lives):
         result = num1 + num2
         user_answer = int(input(f"What is the sum of {num1} and {num2}? "))
         print(f"Your answer should be {result}")
-        score_output = get_score(result, user_answer, score, lives)
-        print(f"your score is {score_output[0]}")
-        print(f"You have {score_output[1]} lives")
+        user_score = get_score(result, user_answer, score)
+        user_lives = get_lives(result, user_answer, lives)
+        print(f"your score is {user_score}")
+        print(f"You have {user_lives} lives")
    # if index == '-':
    #     result = num1 - num2
    #     user_answer = int(
@@ -52,18 +53,24 @@ def get_question(character, score, lives):
     #   print(f"You have {score[1]} lives")
     # also return result, user_answer
     # returns question information & user answer & user score
-    question_info = [num1, num2, index, result, user_answer, score, lives]
+    question_info = [num1, num2, index, result,
+                     user_answer, user_score, user_lives]
     return question_info
     # function for user2
 
 
-def get_score(result, user_answer, score, lives):
+def get_score(result, user_answer, score):
     if result == user_answer:
         score += 1
     else:
+        score = score
+    return score
+
+
+def get_lives(result, user_answer, lives):
+    if result != user_answer:
         lives -= 1
-    output = [score, lives]
-    return output
+    return lives
 
 
 # can be used later possibly to determine winner/losser/tiebreaker
