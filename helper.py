@@ -4,7 +4,12 @@ screen_width = 1400
 screen_height = 900
 screen = pygame.display.set_mode((screen_width,screen_height), pygame.RESIZABLE)
 
+font = pygame.font.SysFont('georgia', 20)
+displayStartText = font.render("START SCREEN", False, (0,0,0))
+displaySettingText = font.render("SETTINGS", False, (0,0,0))
 
+# Animations Class -- Finished logic
+# 	Takes care of all animations; characters and backgrounds
 class Animations(pygame.sprite.Sprite):
 	def __init__(self, pos_x, pos_y, directory):
 		super().__init__()
@@ -15,9 +20,9 @@ class Animations(pygame.sprite.Sprite):
 
 		for item in list[1:]:
 			if directory == "Animations/Background":
-				self.sprites.append(pygame.transform.scale(pygame.image.load(directory + '/' + item), (1400,900)))
+				self.sprites.append(pygame.transform.scale(pygame.image.load(directory + '/' + item).convert(), (1400,900)))
 			else:
-				self.sprites.append(pygame.image.load(directory + '/' + item))
+				self.sprites.append(pygame.image.load(directory + '/' + item).convert())
 
 		self.current_sprite = 0
 		self.image = self.sprites[self.current_sprite]
@@ -37,9 +42,8 @@ class Animations(pygame.sprite.Sprite):
 
 		self.image = self.sprites[int(self.current_sprite)]
 
-font = pygame.font.SysFont('georgia', 20)
-displayStartText = font.render("START SCREEN", False, (0,0,0))
-displaySettingText = font.render("SETTINGS", False, (0,0,0))
+# Text Button Class -- Finished Logic
+# 	Place holder for image based buttons
 class Button:
 	def __init__(self, color, x, y, width, height, text=''):
 		self.color = color
@@ -68,7 +72,22 @@ class Button:
 				return True
 		return False
 
+
+# Image Button Class -- WIP
+#	True button class
+class ImgButton():
+	def __init__(self, x, y, image):
+		self.image = image
+		self.rect = self.image.get_rect
+
+
+
+
+
+
 startText = Button((255,255,255),screen_width/2, screen_height/2, 100, 25, "Start")
 settingText = Button((255,255,255),screen_width/2, screen_height/2 + 50, 100, 25, "Settings")
 returnText = Button((255,255,0), 1200, 100, 100, 25, "Return")
 quitText = Button((255,255,255),screen_width/2, screen_height/2 + 100, 100, 25, "Quit")
+endlessText = Button((255,255,255), screen_width/2, screen_height/2, 150, 25, "Endless Mode")
+versusText = Button((255,255,255), screen_width/2, screen_height/2 + 50, 150, 25, "Versus Mode")

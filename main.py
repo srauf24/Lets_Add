@@ -50,6 +50,12 @@ displaySettingText = font.render("SETTINGS", False, (0,0,0))
 choosing = False
 displayChoosingText = font.render("CHOOSE YOUR CHARACTER", False, (0,0,0))
 
+# Endless Mode Screen
+endlessMode = False
+
+# Versus Mode Screen
+versusMode = False
+
 # WIP
 displayyWIP = font.render("WORK IN PROGRESS", False, (255,255,255))
 
@@ -63,7 +69,8 @@ while True:
 				pygame.quit()
 				sys.exit()
 			
-    
+    # Start Screen -- WIP
+	# 	Finished logic / Incomplete GUI
 	while (start):
 		for event in pygame.event.get():
 			pos = pygame.mouse.get_pos()
@@ -99,6 +106,9 @@ while True:
 		
 		pygame.display.flip()
 
+
+	# Settings Screen -- WIP
+	#	Incomplete logic / Incomplete GUI
 	while (setting):
 		for event in pygame.event.get():
 			pos = pygame.mouse.get_pos()
@@ -124,9 +134,11 @@ while True:
 		pygame.display.flip()
 
 
-
+	# Player Mode Screen -- WIP
+	# 	Finished logic / Incomplete GUI
 	while(playerMode):
 		for event in pygame.event.get():
+			pos = pygame.mouse.get_pos()
 			if event.type == pygame.QUIT:
 				pygame.quit()
 				sys.exit()
@@ -134,13 +146,26 @@ while True:
 				if event.key == pygame.K_0:
 					playerMode = False
 					choosing = True
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				if endlessText.isOver(pos):
+					print("Endless is pressed")
+					playerMode = False
+					endlessMode = choosing = True
+
+				if versusText.isOver(pos):
+					print("Versus is pressed")
+					playerMode = False
+					versusMode = choosing = True
+
 		pygame.display.flip()
 		screen.fill((0,255,0))
-		screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+		endlessText.draw(screen, (255,255,255))
+		versusText.draw(screen, (255,255,255))
 		clock.tick(240)
 
 
-
+	# Choosing Character Screen -- WIP
+	# 	Incomplete logic / Incomplete GUI
 	while(choosing):
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -156,7 +181,7 @@ while True:
 		screen.fill((0,0,255))
 		screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
 		moving_sprites.draw(screen)
-		moving_sprites.update(0.15)
+		moving_sprites.update(0.1)
 		sleepFox.idle()
 		goldieSit.idle()
 		silverSit.idle()
@@ -164,7 +189,30 @@ while True:
 		pygame.display.flip()
 		clock.tick(240)
 
-    # Drawing
+	# Endless Mode Screen
+	# 	Incomplete logic / Incomplete GUI
+	while(endlessMode):
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				sys.exit()
+		
+		screen.fill((255,255,255))
+		pygame.display.flip()
+
+	
+	# Versus Mode Screen
+	# 	Incomplete logic / Incomplete GUI
+	while(versusMode):
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				sys.exit()
+		
+		screen.fill((255,255,255))
+		pygame.display.flip()
+
+
 	pygame.display.flip()
 	screen.fill((0,0,0))
 	screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
