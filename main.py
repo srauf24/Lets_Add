@@ -174,6 +174,7 @@ while True:
 	# 	Incomplete logic / Complete GUI
     while(choosing):
         for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -183,6 +184,15 @@ while True:
                     choosing = False
                 if event.key == pygame.K_1:
                     choosing = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if sleepFox.isOver(pos):
+                    print("Sleep Fox was pressed")
+                if goldieSit.isOver(pos):
+                    print("Goldie was pressed")
+                if silverSit.isOver(pos):
+                    print("Silver Dog was pressed")
+                if catRun.isOver(pos):
+                    print("Cat was pressed")
 		
         choosingCharacterScreen.draw(screen)
         background2.idle()

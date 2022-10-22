@@ -15,6 +15,8 @@ class Animations(pygame.sprite.Sprite):
 	def __init__(self, pos_x, pos_y, directory):
 		super().__init__()
 		self.attack_animation = False
+		self.pos_x = pos_x
+		self.pos_y = pos_y
 		self.sprites = []
 		list = os.listdir(directory)
 		list.sort()
@@ -28,6 +30,8 @@ class Animations(pygame.sprite.Sprite):
 		self.current_sprite = 0
 		self.image = self.sprites[self.current_sprite]
 
+		self.width = self.image.get_width()
+		self.height = self.image.get_height()
 		self.rect = self.image.get_rect()
 		self.rect.topleft = [pos_x, pos_y]
 
@@ -42,6 +46,12 @@ class Animations(pygame.sprite.Sprite):
 				self.attack_animation = False
 
 		self.image = self.sprites[int(self.current_sprite)]
+
+	def isOver(self, pos):
+		if pos[0] > self.pos_x and pos[0] < self.pos_x + self.width:
+			if pos[1] > self.pos_y and pos[1] < self.pos_y + self.height:
+				return True
+		return False
 
 # Text Button Class -- Finished Logic
 # 	Placeholder for image based buttons
