@@ -170,18 +170,6 @@ while True:
         pygame.display.flip()
         clock.tick(240)
 
-        screen.fill((0, 0, 255))
-        screen.blit(displayChoosingText, (screen_width / 2 - displayChoosingText.get_width() / 2, 50))
-        screen.blit(displayScoreText, (screen_width / 7 - displayScoreText.get_width() / 2, 50))
-        moving_sprites.draw(screen)
-        moving_sprites.update(0.1)
-        sleepFox.idle()
-        goldieSit.idle()
-        silverSit.idle()
-        catRun.idle()
-        pygame.display.flip()
-        clock.tick(240)
-
 	# Choosing Character Screen -- WIP
 	# 	Incomplete logic / Complete GUI
     while(choosing):
