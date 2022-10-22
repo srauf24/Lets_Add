@@ -142,14 +142,14 @@ while True:
 	# 	Finished logic / Incomplete GUI
     while(playerMode):
         for event in pygame.event.get():
-	        pos = pygame.mouse.get_pos()
+            pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
-            	pygame.quit()
-            	sys.exit()
+                pygame.quit()
+                sys.exit()
             if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_0:
-					playerMode = False
-					choosing = True
+                if event.key == pygame.K_0:
+                    playerMode = False
+                    choosing = True
 			# if event.type == pygame.MOUSEBUTTONDOWN:
 			# 	if endlessText.isOver(pos):
 			# 		print("Endless is pressed")
@@ -163,12 +163,12 @@ while True:
 
 	
         choosingCharacterScreen.draw(screen)
-		background2.idle()
-		background2.update(0.05)
-		endlessText.draw(screen, (255,255,255))
-		versusText.draw(screen, (255,255,255))
-		pygame.display.flip()
-		clock.tick(240)
+        background2.idle()
+        background2.update(0.05)
+        endlessText.draw(screen, (255,255,255))
+        versusText.draw(screen, (255,255,255))
+        pygame.display.flip()
+        clock.tick(240)
 
         screen.fill((0, 0, 255))
         screen.blit(displayChoosingText, (screen_width / 2 - displayChoosingText.get_width() / 2, 50))
@@ -184,63 +184,63 @@ while True:
 
 	# Choosing Character Screen -- WIP
 	# 	Incomplete logic / Complete GUI
-	while(choosing):
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				pygame.quit()
-				sys.exit()
-			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_0:
-					setting = True
-					choosing = False
-				if event.key == pygame.K_1:
-					choosing = False
+    while(choosing):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_0:
+                    setting = True
+                    choosing = False
+                if event.key == pygame.K_1:
+                    choosing = False
 		
-		choosingCharacterScreen.draw(screen)
-		background2.idle()
-		background2.update(0.05)
-		screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
-		moving_sprites.draw(screen)
-		moving_sprites.update(0.05)
-		sleepFox.idle()
-		goldieSit.idle()
-		silverSit.idle()
-		catRun.idle()
-		pygame.display.flip()
-		clock.tick(240)
+        choosingCharacterScreen.draw(screen)
+        background2.idle()
+        background2.update(0.05)
+        screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
+        moving_sprites.draw(screen)
+        moving_sprites.update(0.05)
+        sleepFox.idle()
+        goldieSit.idle()
+        silverSit.idle()
+        catRun.idle()
+        pygame.display.flip()
+        clock.tick(240)
 
 	# Endless Mode Screen
 	# 	Incomplete logic / Incomplete GUI
-	while(endlessMode):
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				pygame.quit()
-				sys.exit()
+    while(endlessMode):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 		
-		screen.fill((255,255,255))
-		screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
-		pygame.display.flip()
+        screen.fill((255,255,255))
+        screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+        pygame.display.flip()
 
 	
 	# Versus Mode Screen
 	# 	Incomplete logic / Incomplete GUI
-	while(versusMode):
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				pygame.quit()
-				sys.exit()
+    while(versusMode):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 		
-		screen.fill((255,255,255))
-		screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
-		pygame.display.flip()
+        screen.fill((255,255,255))
+        screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+        pygame.display.flip()
 
         screen.fill((255, 255, 255))
         pygame.display.flip()
 
 
-	screen.fill((0,0,0))
-	screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
-	pygame.display.flip()
-	clock.tick(240)
+    screen.fill((0,0,0))
+    screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+    pygame.display.flip()
+    clock.tick(240)
 
 pygame.quit()
