@@ -20,8 +20,13 @@ class Animations(pygame.sprite.Sprite):
 		list.sort()
 
 		for item in list[1:]:
+<<<<<<< HEAD
 			if directory == "Animations/Background":
 				self.sprites.append(pygame.transform.scale(pygame.image.load(directory + '/' + item).convert(), (1400, 900)))
+=======
+			if directory == "Animations/Background" or directory == "Animations/Background2":
+				self.sprites.append(pygame.transform.scale(pygame.image.load(directory + '/' + item).convert(), (1400,900)))
+>>>>>>> 72f6b7e (small changes)
 			else:
 				self.sprites.append(pygame.image.load(directory + '/' + item).convert())
 
