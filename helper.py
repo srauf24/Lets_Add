@@ -92,6 +92,11 @@ class ImgButton():
 		self.image = image
 		self.rect = self.image.get_rect
 
+class Player():
+	def __init__(self, player):
+		self.lives = 4
+		self.character = "placeholder"
+		self.player = player
 
 startText = Button((255, 255, 255), screen_width/2, screen_height/2, 100, 25, "Start")
 settingText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 100, 25, "Settings")
