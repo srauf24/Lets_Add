@@ -60,6 +60,8 @@ displaySettingText = font.render("SETTINGS", False, (0, 0, 0))
 choosing1 = False
 choosing2 = False
 displayChoosingText = font.render("CHOOSE YOUR CHARACTER", False, (0, 0, 0))
+displayPlayerChoosing1 = font.render("Player 1's Turn!", False, (0, 0, 0))
+displayPlayerChoosing2 = font.render("Player 2's Turn!", False, (0, 0, 0))
 displayScoreText = font.render("HIGH SCORE: ", False, (0, 0, 0))
 
 # Endless Mode Screen
@@ -194,17 +196,13 @@ while True:
                     choosing = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sleepFox.isOver(pos):
-                    Player1.character = "Sleepy Fox"
-                    print("Player 1: " + Player1.character)
+                    Player1.setCharacter('Animations/SleepFoxAnimation', 1)
                 if goldieSit.isOver(pos):
-                    Player1.character = "Goldie Dog"
-                    print(Player1.character)
+                    Player1.setCharacter('Animations/GoldieAnimation', 1)
                 if silverSit.isOver(pos):
-                    Player1.character = "Silver Dog"
-                    print(Player1.character)
+                    Player1.setCharacter("Animations/SilverSitAnimation", 1)
                 if catRun.isOver(pos):
-                    Player1.character = "Black Cat"
-                    print(Player1.character)
+                    Player1.setCharacter("Animations/CatRunAnimation" , 1)
                 
                 if (amountofPlayers == 2):
                     choosing2 = True
@@ -214,6 +212,7 @@ while True:
         background2.idle()
         background2.update(0.05)
         screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
+        screen.blit(displayPlayerChoosing1, (screen_width/2 - displayPlayerChoosing1.get_width()/2,100))
         moving_sprites.draw(screen)
         moving_sprites.update(0.05)
         sleepFox.idle()
@@ -237,23 +236,20 @@ while True:
                     choosing = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sleepFox.isOver(pos):
-                    Player2.character = "Sleepy Fox"
-                    print("Player 2: " + Player1.character)
+                    Player2.setCharacter("Animations/SleepFoxAnimation" , 2)
                 if goldieSit.isOver(pos):
-                    Player2.character = "Goldie Dog"
-                    print(Player2.character)
+                    Player2.setCharacter("Animations/GoldieAnimation", 2)
                 if silverSit.isOver(pos):
-                    Player2.character = "Silver Dog"
-                    print(Player2.character)
+                    Player2.setCharacter("Animations/SilverSitAnimation" , 2)
                 if catRun.isOver(pos):
-                    Player2.character = "Black Cat"
-                    print(Player2.character)
+                    Player2.setCharacter("Animations/CatRunAnimation", 2)
                 choosing2 = False        
 		
         choosingCharacterScreen.draw(screen)
         background2.idle()
         background2.update(0.05)
         screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
+        screen.blit(displayPlayerChoosing2, (screen_width/2 - displayPlayerChoosing2.get_width()/2,100))
         moving_sprites.draw(screen)
         moving_sprites.update(0.05)
         sleepFox.idle()
@@ -279,6 +275,9 @@ while True:
 		
         screen.fill((0,0,0))
         screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+        Player1.game_sprites.draw(screen)
+        Player1.game_sprites.update(0.1)
+        Player1.player1Animation.idle()
         pygame.display.flip()
 
 	
@@ -298,6 +297,12 @@ while True:
 		
         screen.fill((0,0,0))
         screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+        Player1.game_sprites.draw(screen)
+        Player1.game_sprites.update(0.1)
+        Player2.game_sprites.draw(screen)
+        Player2.game_sprites.update(0.1)
+        Player1.player1Animation.idle()
+        Player2.player2Animation.idle()
         pygame.display.flip()
 
 

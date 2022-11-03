@@ -97,6 +97,17 @@ class Player():
 		self.lives = 4
 		self.character = "placeholder"
 		self.player = player
+		self.game_sprites = pygame.sprite.Group()
+	def setCharacter(self, character, player):
+		self.character = character
+		if player == 1:
+			self.player1Animation = Animations(100, 350, character)
+			self.game_sprites.add(self.player1Animation)
+		if player == 2:
+			self.player2Animation = Animations(750, 0, character)
+			self.game_sprites.add(self.player2Animation) 
+
+
 
 startText = Button((255, 255, 255), screen_width/2, screen_height/2, 100, 25, "Start")
 settingText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 100, 25, "Settings")
