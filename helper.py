@@ -22,7 +22,7 @@ class Animations(pygame.sprite.Sprite):
 		list.sort()
 
 		for item in list[1:]:
-			if directory == "Animations/Background" or directory == "Animations/Background2":
+			if directory == "Animations/Background" or directory == "Animations/Background2" or directory == "Animations/Background3":
 				self.sprites.append(pygame.transform.scale(pygame.image.load(directory + '/' + item).convert(), (1400,900)))
 			else:
 				self.sprites.append(pygame.image.load(directory + '/' + item).convert())
@@ -94,21 +94,27 @@ class ImgButton():
 
 class Player():
 	def __init__(self, player):
-		self.lives = 4
+		self.lives = 3
 		self.character = "placeholder"
 		self.player = player
 		self.game_sprites = pygame.sprite.Group()
 	def setCharacter(self, character, player):
 		self.character = character
 		if player == 1:
-			self.player1Animation = Animations(100, 350, character)
+			if character == "Animations/SilverSitAnimation":
+				self.player1Animation = Animations(100, 300, character)
+			else:
+				self.player1Animation = Animations(50, 350, character)
 			self.game_sprites.add(self.player1Animation)
 		if player == 2:
-			self.player2Animation = Animations(750, 0, character)
+			if character == "Animations/SilverSitAnimation":
+				self.player2Animation = Animations(850, -60, character)
+			else:
+				self.player2Animation = Animations(800, 20, character)
 			self.game_sprites.add(self.player2Animation) 
 
-
-
+heart = pygame.transform.scale(pygame.image.load("Images/heart.png"), (100,100))
+platform = pygame.transform.scale(pygame.image.load("Images/platform.png"), (800,800))
 startText = Button((255, 255, 255), screen_width/2, screen_height/2, 100, 25, "Start")
 settingText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 100, 25, "Settings")
 returnText = Button((255, 255, 0), 1200, 100, 100, 25, "Return")

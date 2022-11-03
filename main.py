@@ -42,6 +42,10 @@ choosingCharacterScreen = pygame.sprite.Group()
 background2 = Animations(0,0, 'Animations/Background2')
 choosingCharacterScreen.add(background2)
 
+fightingScreen = pygame.sprite.Group()
+background3 = Animations(0,0, 'Animations/Background3')
+fightingScreen.add(background3)
+
 # Start Screen
 start = True
 
@@ -70,18 +74,13 @@ endlessMode = False
 # Versus Mode Screen
 versusMode = False
 
+# End Screen
+end = False
+
 # WIP
 displayyWIP = font.render("WORK IN PROGRESS", False, (255, 255, 255))
 
 while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                pygame.quit()
-                sys.exit()
 
     # Start Screen -- WIP
     # 	Finished logic / Incomplete GUI
@@ -147,7 +146,7 @@ while True:
 
 	# Player Mode Screen -- WIP
 	# 	Finished logic / Incomplete GUI
-    while(playerMode):
+    while playerMode:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
@@ -182,7 +181,7 @@ while True:
 
 	# Choosing Character Screen -- WIP
 	# 	Incomplete logic / Complete GUI
-    while(choosing1):
+    while choosing1:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
@@ -222,7 +221,7 @@ while True:
         pygame.display.flip()
         clock.tick(240)
 
-    while(choosing2):
+    while choosing2:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
@@ -247,7 +246,7 @@ while True:
 		
         choosingCharacterScreen.draw(screen)
         background2.idle()
-        background2.update(0.05)
+        background2.update(0.1)
         screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
         screen.blit(displayPlayerChoosing2, (screen_width/2 - displayPlayerChoosing2.get_width()/2,100))
         moving_sprites.draw(screen)
@@ -261,7 +260,7 @@ while True:
 
 	# Endless Mode Screen
 	# 	Incomplete logic / Incomplete GUI
-    while(endlessMode):
+    while endlessMode:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -273,17 +272,21 @@ while True:
                     pygame.quit()
                     sys.exit()
 		
-        screen.fill((0,0,0))
-        screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+        fightingScreen.draw(screen)
+        background3.idle()
+        background3.update(0.1)
         Player1.game_sprites.draw(screen)
         Player1.game_sprites.update(0.1)
         Player1.player1Animation.idle()
+        screen.blit(platform, (-60, 450))
+        for i in range(Player1.lives):
+            screen.blit(heart, (100 + (100*i), 770))
         pygame.display.flip()
 
 	
 	# Versus Mode Screen
 	# 	Incomplete logic / Incomplete GUI
-    while(versusMode):
+    while versusMode:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -295,20 +298,36 @@ while True:
                     pygame.quit()
                     sys.exit()
 		
-        screen.fill((0,0,0))
-        screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+        fightingScreen.draw(screen)
+        background3.idle()
+        background3.update(0.1)
+        screen.blit(platform, (-60, 450))
+        screen.blit(platform, (700, 100))
         Player1.game_sprites.draw(screen)
-        Player1.game_sprites.update(0.1)
+        Player1.game_sprites.update(0.15)
         Player2.game_sprites.draw(screen)
-        Player2.game_sprites.update(0.1)
+        Player2.game_sprites.update(0.15)
         Player1.player1Animation.idle()
         Player2.player2Animation.idle()
+        for i in range(Player1.lives):
+            screen.blit(heart, (100 + (100*i), 770))
+        for i in range(Player2.lives):
+            screen.blit(heart, (900 + (100*i), 450))
         pygame.display.flip()
 
+    while end:
+        for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                        sys.exit()
 
-    screen.fill((0,0,0))
-    screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
-    pygame.display.flip()
-    clock.tick(240)
+        screen.fill((0,0,0))
+        screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+        pygame.display.flip()
+        clock.tick(240)
 
 pygame.quit()
