@@ -275,10 +275,10 @@ while True:
         fightingScreen.draw(screen)
         background3.idle()
         background3.update(0.1)
+        screen.blit(platform, (-60, 450))
         Player1.game_sprites.draw(screen)
         Player1.game_sprites.update(0.1)
         Player1.player1Animation.idle()
-        screen.blit(platform, (-60, 450))
         for i in range(Player1.lives):
             screen.blit(heart, (100 + (100*i), 770))
         pygame.display.flip()
