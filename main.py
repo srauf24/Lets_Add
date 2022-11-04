@@ -302,7 +302,7 @@ while True:
         background3.idle()
         background3.update(0.1)
         screen.blit(platform, (-60, 450))
-        screen.blit(platform, (700, 100))
+        screen.blit(platform, (700, 50))
         Player1.game_sprites.draw(screen)
         Player1.game_sprites.update(0.15)
         Player2.game_sprites.draw(screen)
@@ -310,9 +310,9 @@ while True:
         Player1.player1Animation.idle()
         Player2.player2Animation.idle()
         for i in range(Player1.lives):
-            screen.blit(heart, (100 + (100*i), 770))
+            screen.blit(heart, (150 + (100*i), 800))
         for i in range(Player2.lives):
-            screen.blit(heart, (900 + (100*i), 450))
+            screen.blit(heart, (900 + (100*i), 400))
         pygame.display.flip()
 
     while end:

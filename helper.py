@@ -108,9 +108,9 @@ class Player():
 			self.game_sprites.add(self.player1Animation)
 		if player == 2:
 			if character == "Animations/SilverSitAnimation":
-				self.player2Animation = Animations(850, -60, character)
+				self.player2Animation = Animations(850, -100, character)
 			else:
-				self.player2Animation = Animations(800, 20, character)
+				self.player2Animation = Animations(800, -60, character)
 			self.game_sprites.add(self.player2Animation) 
 
 heart = pygame.transform.scale(pygame.image.load("Images/heart.png"), (100,100))
