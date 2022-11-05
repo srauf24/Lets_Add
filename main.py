@@ -27,6 +27,7 @@ mixer.music.load('Sounds/persona5.mp3')
 mixer.music.play()
 mixer.music.set_volume(0.3)
 cow = True
+chicken = True
 
 # Creating the sprites and groups
 moving_sprites = pygame.sprite.Group()
