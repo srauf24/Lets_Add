@@ -1,11 +1,8 @@
 from time import sleep
 import pygame, sys, os
 from helper import *
-<<<<<<< HEAD
 from pygame import mixer
-=======
 from endless_Mode import *
->>>>>>> 2859422 (fonts)
 # samee
 # gabe
 # william
@@ -138,15 +135,7 @@ while True:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-<<<<<<< HEAD
-                if event.key == pygame.K_ESCAPE:
-                    print("Escape is pressed")
-                    pygame.quit()
-                    sys.exit()
-                if event.key == pygame.K_0:
-=======
                 if event.key == pygame.K_0 or event.key == pygame.K_ESCAPE:
->>>>>>> 2859422 (fonts)
                     start = True
                     setting = False
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -221,27 +210,17 @@ while True:
                     choosing = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sleepFox.isOver(pos):
-<<<<<<< HEAD
                     Player1.setCharacter('Animations/SleepFoxAnimation', 1)
                     mixer.music.stop()
                 if goldieSit.isOver(pos):
                     Player1.setCharacter('Animations/GoldieAnimation', 1)
                     mixer.music.stop()
-=======
-                    Player1.setCharacter("Animations/SleepFoxAnimation", 1)
-                if goldieSit.isOver(pos):
-                    Player1.setCharacter("Animations/GoldieAnimation", 1)
->>>>>>> 2859422 (fonts)
                 if silverSit.isOver(pos):
                     Player1.setCharacter("Animations/SilverSitAnimation", 1)
                     mixer.music.stop()
                 if catRun.isOver(pos):
-<<<<<<< HEAD
                     Player1.setCharacter("Animations/CatRunAnimation" , 1)
                     mixer.music.stop()
-=======
-                    Player1.setCharacter("Animations/CatRunAnimation", 1)
->>>>>>> 2859422 (fonts)
                 
                 if (amountofPlayers == 2):
                     choosing2 = True
