@@ -26,6 +26,7 @@ screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE
 mixer.music.load('Sounds/persona5.mp3')
 mixer.music.play()
 mixer.music.set_volume(0.3)
+cow = True
 
 # Creating the sprites and groups
 moving_sprites = pygame.sprite.Group()
