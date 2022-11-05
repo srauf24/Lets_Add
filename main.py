@@ -218,12 +218,16 @@ while True:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sleepFox.isOver(pos):
                     Player1.setCharacter('Animations/SleepFoxAnimation', 1)
+                    choosing1 = False
                 if goldieSit.isOver(pos):
                     Player1.setCharacter('Animations/GoldieAnimation', 1)
+                    choosing1 = False
                 if silverSit.isOver(pos):
                     Player1.setCharacter("Animations/SilverSitAnimation", 1)
+                    choosing1 = False
                 if catRun.isOver(pos):
                     Player1.setCharacter("Animations/CatRunAnimation" , 1)
+                    choosing1 = False
                 
                 if (amountofPlayers == 2):
                     choosing2 = True
