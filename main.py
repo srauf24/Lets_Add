@@ -218,16 +218,30 @@ while True:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sleepFox.isOver(pos):
                     Player1.setCharacter('Animations/SleepFoxAnimation', 1)
+<<<<<<< HEAD
                 if goldieSit.isOver(pos):
                     Player1.setCharacter('Animations/GoldieAnimation', 1)
                 if silverSit.isOver(pos):
                     Player1.setCharacter("Animations/SilverSitAnimation", 1)
                 if catRun.isOver(pos):
                     Player1.setCharacter("Animations/CatRunAnimation" , 1)
+=======
+                    choosing1 = False
+                if goldieSit.isOver(pos):
+                    Player1.setCharacter('Animations/GoldieAnimation', 1)
+                    choosing1 = False
+                if silverSit.isOver(pos):
+                    Player1.setCharacter("Animations/SilverSitAnimation", 1)
+                    choosing1 = False
+                if catRun.isOver(pos):
+                    Player1.setCharacter("Animations/CatRunAnimation" , 1)
+                    choosing1 = False
+>>>>>>> ee366c1 (changes)
                 
                 if (amountofPlayers == 2):
                     choosing2 = True
-                choosing1 = False         
+                if (amountofPlayers == 1 and choosing1 == False):
+                    mixer.music.stop()         
 		
         choosingCharacterScreen.draw(screen)
         background2.idle()
@@ -258,13 +272,20 @@ while True:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sleepFox.isOver(pos):
                     Player2.setCharacter("Animations/SleepFoxAnimation" , 2)
+                    mixer.music.stop()
+                    choosing2 = False
                 if goldieSit.isOver(pos):
                     Player2.setCharacter("Animations/GoldieAnimation", 2)
+                    mixer.music.stop()
+                    choosing2 = False
                 if silverSit.isOver(pos):
                     Player2.setCharacter("Animations/SilverSitAnimation" , 2)
+                    mixer.music.stop()
+                    choosing2 = False
                 if catRun.isOver(pos):
                     Player2.setCharacter("Animations/CatRunAnimation", 2)
-                choosing2 = False        
+                    mixer.music.stop()   
+                    choosing2 = False     
 		
         choosingCharacterScreen.draw(screen)
         background2.idle()
