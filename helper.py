@@ -4,10 +4,12 @@ screen_width = 1400
 screen_height = 900
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
 
-font = pygame.font.SysFont('georgia', 20)
-displayStartText = font.render("START SCREEN", False, (0, 0, 0))
-displaySettingText = font.render("SETTINGS", False, (0, 0, 0))
-displayScoreText = font.render("HIGH SCORE: ", False, (0, 0, 0))
+fontBold = pygame.font.Font('Fonts/PixelBold.ttf', 60)
+fontMono = pygame.font.Font('Fonts/PixelMono.ttf', 20)
+fontSans = pygame.font.Font('Fonts/PixelSans.ttf', 20)
+displayStartText = fontSans.render("START SCREEN", False, (0, 0, 0))
+displaySettingText = fontSans.render("SETTINGS", False, (0, 0, 0))
+displayScoreText = fontSans.render("HIGH SCORE: ", False, (0, 0, 0))
 
 # Animations Class -- Finished logic
 # 	Takes care of all animations; characters and backgrounds
@@ -74,7 +76,7 @@ class Button:
 			pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.height), 0)
 
 		if self.text != '':
-			text = font.render(self.text, 1, (0, 0, 0))
+			text = fontSans.render(self.text, 1, (0, 0, 0))
 			win.blit(text, (self.x + (self.width / 2 - text.get_width() / 2), self.y + (self.height / 2 - text.get_height() / 2)))
 
 	def isOver(self, pos):

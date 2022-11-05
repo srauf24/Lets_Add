@@ -62,15 +62,15 @@ amountofPlayers = 0
 
 # Setting Screen
 setting = False
-displaySettingText = font.render("SETTINGS", False, (0, 0, 0))
+displaySettingText = fontBold.render("SETTINGS", False, (0, 0, 0))
 
 # Choosing Character Screen
 choosing1 = False
 choosing2 = False
-displayChoosingText = font.render("CHOOSE YOUR CHARACTER", False, (0, 0, 0))
-displayPlayerChoosing1 = font.render("Player 1's Turn!", False, (0, 0, 0))
-displayPlayerChoosing2 = font.render("Player 2's Turn!", False, (0, 0, 0))
-displayScoreText = font.render("HIGH SCORE: ", False, (0, 0, 0))
+displayChoosingText = fontBold.render("CHOOSE YOUR CHARACTER", False, (0, 0, 0))
+displayPlayerChoosing1 = fontSans.render("Player 1's Turn!", False, (0, 0, 0))
+displayPlayerChoosing2 = fontSans.render("Player 2's Turn!", False, (0, 0, 0))
+displayScoreText = fontSans.render("HIGH SCORE: ", False, (0, 0, 0))
 
 # Endless Mode Screen
 endlessMode = False
@@ -82,7 +82,7 @@ versusMode = False
 end = False
 
 # WIP
-displayyWIP = font.render("WORK IN PROGRESS", False, (255, 255, 255))
+displayyWIP = fontSans.render("WORK IN PROGRESS", False, (255, 255, 255))
 
 while True:
 
@@ -218,25 +218,12 @@ while True:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sleepFox.isOver(pos):
                     Player1.setCharacter('Animations/SleepFoxAnimation', 1)
-<<<<<<< HEAD
                 if goldieSit.isOver(pos):
                     Player1.setCharacter('Animations/GoldieAnimation', 1)
                 if silverSit.isOver(pos):
                     Player1.setCharacter("Animations/SilverSitAnimation", 1)
                 if catRun.isOver(pos):
                     Player1.setCharacter("Animations/CatRunAnimation" , 1)
-=======
-                    choosing1 = False
-                if goldieSit.isOver(pos):
-                    Player1.setCharacter('Animations/GoldieAnimation', 1)
-                    choosing1 = False
-                if silverSit.isOver(pos):
-                    Player1.setCharacter("Animations/SilverSitAnimation", 1)
-                    choosing1 = False
-                if catRun.isOver(pos):
-                    Player1.setCharacter("Animations/CatRunAnimation" , 1)
-                    choosing1 = False
->>>>>>> ee366c1 (changes)
                 
                 if (amountofPlayers == 2):
                     choosing2 = True
@@ -247,7 +234,7 @@ while True:
         background2.idle()
         background2.update(0.05)
         screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
-        screen.blit(displayPlayerChoosing1, (screen_width/2 - displayPlayerChoosing1.get_width()/2,100))
+        screen.blit(displayPlayerChoosing1, (screen_width/2 - displayPlayerChoosing1.get_width()/2,150))
         moving_sprites.draw(screen)
         moving_sprites.update(0.05)
         sleepFox.idle()
@@ -291,7 +278,7 @@ while True:
         background2.idle()
         background2.update(0.1)
         screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
-        screen.blit(displayPlayerChoosing2, (screen_width/2 - displayPlayerChoosing2.get_width()/2,100))
+        screen.blit(displayPlayerChoosing2, (screen_width/2 - displayPlayerChoosing2.get_width()/2,150))
         moving_sprites.draw(screen)
         moving_sprites.update(0.05)
         sleepFox.idle()
