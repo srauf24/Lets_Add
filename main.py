@@ -203,6 +203,9 @@ while True:
 
 	# Choosing Character Screen -- WIP
 	# 	Incomplete logic / Complete GUI
+    mixer.music.load("Sounds/choose.mp3")
+    mixer.music.stop()
+    mixer.music.play()
     while choosing1:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
