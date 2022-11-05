@@ -23,7 +23,7 @@ HS_FILE_2 = open('endless_highscore.txt', 'r')
 screen_width = 1400
 screen_height = 900
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
-bg_music = mixer.music.load('Sounds/persona5.mp3')
+mixer.music.load('Sounds/persona5.mp3')
 mixer.music.play()
 mixer.music.set_volume(0.3)
 
@@ -203,9 +203,8 @@ while True:
 
 	# Choosing Character Screen -- WIP
 	# 	Incomplete logic / Complete GUI
-    mixer.music.load("Sounds/choose.mp3")
-    mixer.music.stop()
-    mixer.music.play()
+    voiceover = mixer.Sound('Sounds/choose.mp3')
+    voiceover.play()
     while choosing1:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
