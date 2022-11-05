@@ -2,7 +2,6 @@ from time import sleep
 import pygame, sys, os
 from helper import *
 from pygame import mixer
-from endless_Mode import *
 # samee
 # gabe
 # william
@@ -63,15 +62,15 @@ amountofPlayers = 0
 
 # Setting Screen
 setting = False
-displaySettingText = fontSans.render("SETTINGS", False, (0, 0, 0))
+displaySettingText = font.render("SETTINGS", False, (0, 0, 0))
 
 # Choosing Character Screen
 choosing1 = False
 choosing2 = False
-displayChoosingText = fontBold.render("CHOOSE YOUR CHARACTER", False, (0, 0, 0))
-displayPlayerChoosing1 = fontSans.render("Player 1's Turn!", False, (0, 0, 0))
-displayPlayerChoosing2 = fontSans.render("Player 2's Turn!", False, (0, 0, 0))
-displayScoreText = fontSans.render("HIGH SCORE: ", False, (0, 0, 0))
+displayChoosingText = font.render("CHOOSE YOUR CHARACTER", False, (0, 0, 0))
+displayPlayerChoosing1 = font.render("Player 1's Turn!", False, (0, 0, 0))
+displayPlayerChoosing2 = font.render("Player 2's Turn!", False, (0, 0, 0))
+displayScoreText = font.render("HIGH SCORE: ", False, (0, 0, 0))
 
 # Endless Mode Screen
 endlessMode = False
@@ -83,7 +82,7 @@ versusMode = False
 end = False
 
 # WIP
-displayyWIP = fontSans.render("WORK IN PROGRESS", False, (255, 255, 255))
+displayyWIP = font.render("WORK IN PROGRESS", False, (255, 255, 255))
 
 while True:
 
@@ -126,7 +125,7 @@ while True:
         
     # Settings Screen -- WIP
     #	Incomplete logic / Incomplete GUI
-    # Only Volume text mutes volume not the image itself -- WIP
+    # Only Volume text mutes background music not the image itself -- WIP
     volume_flag = True
     while setting:
         for event in pygame.event.get():
@@ -135,7 +134,11 @@ while True:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_0 or event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE:
+                    print("Escape is pressed")
+                    pygame.quit()
+                    sys.exit()
+                if event.key == pygame.K_0:
                     start = True
                     setting = False
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -163,8 +166,8 @@ while True:
         volumeText.draw(screen, (255, 255, 0))
         pygame.display.flip()
 
-	# Player Mode Screen -- Completed
-	# 	Finished logic / Complete GUI
+	# Player Mode Screen -- WIP
+	# 	Finished logic / Incomplete GUI
     while playerMode:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -172,16 +175,20 @@ while True:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    start = True
+                if event.key == pygame.K_0:
                     playerMode = False
+                    choosing = True
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if endlessText.isOver(pos):
-                    choosing1 = endlessMode = True
+                    print("Endless is pressed")
+                    choosing1 = True
+                    endlessMode = True
                     amountofPlayers = 1
                     playerMode = False
                 if versusText.isOver(pos):
-                    choosing1 = versusMode = True
+                    print("Versus is pressed")
+                    choosing1 = True
+                    versusMode = True
                     amountofPlayers = 2
                     playerMode = False
 
@@ -194,8 +201,8 @@ while True:
         pygame.display.flip()
         clock.tick(240)
 
-	# Choosing Character Screen for Player 1 -- Completed
-	# 	Complete logic / Complete GUI
+	# Choosing Character Screen -- WIP
+	# 	Incomplete logic / Complete GUI
     while choosing1:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -211,16 +218,12 @@ while True:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sleepFox.isOver(pos):
                     Player1.setCharacter('Animations/SleepFoxAnimation', 1)
-                    mixer.music.stop()
                 if goldieSit.isOver(pos):
                     Player1.setCharacter('Animations/GoldieAnimation', 1)
-                    mixer.music.stop()
                 if silverSit.isOver(pos):
                     Player1.setCharacter("Animations/SilverSitAnimation", 1)
-                    mixer.music.stop()
                 if catRun.isOver(pos):
                     Player1.setCharacter("Animations/CatRunAnimation" , 1)
-                    mixer.music.stop()
                 
                 if (amountofPlayers == 2):
                     choosing2 = True
@@ -230,7 +233,7 @@ while True:
         background2.idle()
         background2.update(0.05)
         screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
-        screen.blit(displayPlayerChoosing1, (screen_width/2 - displayPlayerChoosing1.get_width()/2,150))
+        screen.blit(displayPlayerChoosing1, (screen_width/2 - displayPlayerChoosing1.get_width()/2,100))
         moving_sprites.draw(screen)
         moving_sprites.update(0.05)
         sleepFox.idle()
@@ -240,8 +243,6 @@ while True:
         pygame.display.flip()
         clock.tick(240)
 
-	# Choosing Character Screen for Player 2 -- Completed
-	# 	Complete logic / Complete GUI
     while choosing2:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -269,7 +270,7 @@ while True:
         background2.idle()
         background2.update(0.1)
         screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
-        screen.blit(displayPlayerChoosing2, (screen_width/2 - displayPlayerChoosing2.get_width()/2,150))
+        screen.blit(displayPlayerChoosing2, (screen_width/2 - displayPlayerChoosing2.get_width()/2,100))
         moving_sprites.draw(screen)
         moving_sprites.update(0.05)
         sleepFox.idle()
@@ -281,6 +282,10 @@ while True:
 
 	# Endless Mode Screen
 	# 	Incomplete logic / Incomplete GUI
+    # Added different background music
+    mixer.music.load("Sounds/maplestory1.mp3")
+    mixer.music.stop()
+    mixer.music.play()
     while endlessMode:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -289,11 +294,9 @@ while True:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_0:
                     endlessMode = False
-                if event.key == pygame.K_MINUS:
-                    Player1.lives = Player1.lives - 1
-                if event.key == pygame.K_q:
-                    array1 = get_questionE(Player1.character, Player1.score, Player1.lives)
-                    print(str(array1[0]) + " " + str(array1[2]) + " " + str(array1[1]) + " is?")
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
 		
         fightingScreen.draw(screen)
         background3.idle()
@@ -309,6 +312,10 @@ while True:
 	
 	# Versus Mode Screen
 	# 	Incomplete logic / Incomplete GUI
+    # Added different background music
+    mixer.music.load("Sounds/maplestory2.mp3")
+    mixer.music.stop()
+    mixer.music.play()
     while versusMode:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -340,13 +347,13 @@ while True:
 
     while end:
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+                if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                        sys.exit()
 
         screen.fill((0,0,0))
         screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))

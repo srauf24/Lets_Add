@@ -23,7 +23,7 @@ countdown_thread = threading.Thread(target=countdown)
 ################## get question function for user A ###################
 
 
-def get_questionVersus(character, score):
+def get_question(character, score):
     dog1operations = ['-', '*', '//', ]  # avoids addition
     dog2operations = ['+', '*', '//', ]  # avoid subtraction
     dog3operations = ['+', '-', '//', ]  # avoid multiplication
