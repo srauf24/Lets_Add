@@ -115,9 +115,12 @@ class Player():
 
 heart = pygame.transform.scale(pygame.image.load("Images/heart.png"), (100,100))
 platform = pygame.transform.scale(pygame.image.load("Images/platform.png"), (800,800))
+sound = pygame.transform.scale(pygame.image.load("Images/sound.png"), (100,100))
+mute = pygame.transform.scale(pygame.image.load("Images/mute.png"), (100,100))
 startText = Button((255, 255, 255), screen_width/2, screen_height/2, 100, 25, "Start")
 settingText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 100, 25, "Settings")
 returnText = Button((255, 255, 0), 1200, 100, 100, 25, "Return")
+volumeText = Button((255, 255, 0), 650, 500, 100, 25, "Volume")
 quitText = Button((255, 255, 255), screen_width/2, screen_height/2 + 100, 100, 25, "Quit")
 endlessText = Button((255, 255, 255), screen_width/2, screen_height/2, 150, 25, "Endless Mode")
 versusText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 150, 25, "Versus Mode")

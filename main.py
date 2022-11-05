@@ -1,6 +1,7 @@
 from time import sleep
 import pygame, sys, os
 from helper import *
+from pygame import mixer
 # samee
 # gabe
 # william
@@ -22,6 +23,9 @@ HS_FILE_2 = open('endless_highscore.txt', 'r')
 screen_width = 1400
 screen_height = 900
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
+bg_music = mixer.music.load('Sounds/persona5.mp3')
+mixer.music.play()
+mixer.music.set_volume(0.3)
 
 # Creating the sprites and groups
 moving_sprites = pygame.sprite.Group()
@@ -92,6 +96,7 @@ while True:
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
+                    print("Escape is pressed")
                     pygame.quit()
                     sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -120,6 +125,8 @@ while True:
         
     # Settings Screen -- WIP
     #	Incomplete logic / Incomplete GUI
+    # Only Volume text mutes volume not the image itself -- WIP
+    volume_flag = True
     while setting:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -128,6 +135,7 @@ while True:
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
+                    print("Escape is pressed")
                     pygame.quit()
                     sys.exit()
                 if event.key == pygame.K_0:
@@ -138,10 +146,24 @@ while True:
                     print("Return is pressed")
                     setting = False
                     start = True
+                if volumeText.isOver(pos):
+                    if volume_flag:
+                        print("Volume is muted")
+                        mixer.music.set_volume(0.0)
+                        setting = True
+                        volume_flag = False
+                    elif not volume_flag:
+                        print("Volume is unmuted")  
+                        mixer.music.set_volume(0.3)
+                        setting = True
+                        volume_flag = True
+                
 
         screen.fill((255, 255, 0))
+        screen.blit(sound, (650, 550))
         screen.blit(displaySettingText, (screen_width / 2 - displaySettingText.get_width() / 2, 50))
         returnText.draw(screen, (255, 255, 0))
+        volumeText.draw(screen, (255, 255, 0))
         pygame.display.flip()
 
 	# Player Mode Screen -- WIP
@@ -196,12 +218,16 @@ while True:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if sleepFox.isOver(pos):
                     Player1.setCharacter('Animations/SleepFoxAnimation', 1)
+                    mixer.music.stop()
                 if goldieSit.isOver(pos):
                     Player1.setCharacter('Animations/GoldieAnimation', 1)
+                    mixer.music.stop()
                 if silverSit.isOver(pos):
                     Player1.setCharacter("Animations/SilverSitAnimation", 1)
+                    mixer.music.stop()
                 if catRun.isOver(pos):
                     Player1.setCharacter("Animations/CatRunAnimation" , 1)
+                    mixer.music.stop()
                 
                 if (amountofPlayers == 2):
                     choosing2 = True
