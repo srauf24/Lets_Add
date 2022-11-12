@@ -314,7 +314,7 @@ while True:
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 x = event.unicode
-                if event.key == pygame.K_f:
+                if event.key == pygame.K_q:
                     myArray = get_question(Player1.character)
                     qText = str(myArray[0]) + " " + str(myArray[2]) + " " + str(myArray[1]) + " = ?" 
                     question = fontBold.render(qText, False, (0,0,0))
@@ -366,6 +366,10 @@ while True:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    myArray = get_question(Player1.character)
+                    qText = str(myArray[0]) + " " + str(myArray[2]) + " " + str(myArray[1]) + " = ?" 
+                    question = fontBold.render(qText, False, (0,0,0))
                 if event.key == pygame.K_SPACE:
                     if user_text != str(myArray[3]):
                         print(user_text)
