@@ -2,6 +2,8 @@ from time import sleep
 import pygame, sys, os
 from helper import *
 from pygame import mixer
+from endless_Mode import *
+
 # samee
 # gabe
 # william
@@ -85,6 +87,8 @@ end = False
 
 # WIP
 displayyWIP = fontSans.render("WORK IN PROGRESS", False, (255, 255, 255))
+
+question = fontBold.render("Press Q", False, (0,0,0))
 
 while True:
 
@@ -280,7 +284,7 @@ while True:
                 if catRun.isOver(pos):
                     Player2.setCharacter("Animations/CatRunAnimation", 2)
                     mixer.music.stop()   
-                    choosing2 = False     
+                    choosing2 = False
 		
         choosingCharacterScreen.draw(screen)
         background2.idle()
@@ -310,10 +314,14 @@ while True:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_0:
                     endlessMode = False
+                if event.key == pygame.K_q:
+                    myArray = get_question(Player1.character)
+                    qText = str(myArray[0]) + " " + str(myArray[2]) + " " + str(myArray[1]) + " = ?" 
+                    question = fontBold.render(qText, False, (0,0,0))
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sys.exit()
-		
+
         fightingScreen.draw(screen)
         background3.idle()
         background3.update(0.1)
@@ -323,9 +331,12 @@ while True:
         Player1.player1Animation.idle()
         for i in range(Player1.lives):
             screen.blit(heart, (100 + (100*i), 770))
+        screen.blit(box, (-100,-200))
+        screen.blit(question, (300, 130))
+
         pygame.display.flip()
 
-	
+
 	# Versus Mode Screen
 	# 	Incomplete logic / Incomplete GUI
     # Added different background music

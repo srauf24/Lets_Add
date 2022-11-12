@@ -4,7 +4,7 @@ screen_width = 1400
 screen_height = 900
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
 
-fontBold = pygame.font.Font('Fonts/PixelBold.ttf', 60)
+fontBold = pygame.font.Font('Fonts/PixelBold.ttf', 80)
 fontMono = pygame.font.Font('Fonts/PixelMono.ttf', 20)
 fontSans = pygame.font.Font('Fonts/PixelSans.ttf', 20)
 displayStartText = fontSans.render("START SCREEN", False, (0, 0, 0))
@@ -115,6 +115,7 @@ class Player():
 				self.player2Animation = Animations(800, -60, character)
 			self.game_sprites.add(self.player2Animation) 
 
+box = pygame.transform.scale(pygame.image.load("Images/textBox.png"), (1300,800))
 heart = pygame.transform.scale(pygame.image.load("Images/heart.png"), (100,100))
 platform = pygame.transform.scale(pygame.image.load("Images/platform.png"), (800,800))
 sound = pygame.transform.scale(pygame.image.load("Images/sound.png"), (100,100))

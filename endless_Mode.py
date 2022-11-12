@@ -2,8 +2,7 @@ import random
 from time import *
 from endless_score import update_endless
 
-
-def get_question(character, score, lives):
+def get_question(character):
     dog1operations = ['-', '*', '//', ]  # avoids addition
     dog2operations = ['+', '*', '//', ]  # avoid subtraction
     dog3operations = ['+', '-', '//', ]  # avoid multiplication
@@ -13,50 +12,49 @@ def get_question(character, score, lives):
     numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     num1 = random.choice(numbers1)
     num2 = random.choice(numbers2)
-    if character == "dog1":
+    if character == "Animations/SleepFoxAnimation":
         index = random.choice(dog1operations)
-    if character == "dog2":
+    if character == "Animations/GoldieAnimation":
         index = random.choice(dog2operations)
-    if character == "dog3":
+    if character == "Animations/SilverSitAnimation":
         index = random.choice(dog3operations)
-    if character == "dog4":
+    if character == "Animations/CatRunAnimation":
         index = random.choice(dog4operations)
     # index = '+'  # testing purposes
     if index == '+':
         result = num1 + num2
-        user_answer = int(input(f"What is the sum of {num1} and {num2}? "))
-        print(f"Your answer should be {result}")
-        score = get_score(result, user_answer, score)
-        lives = get_lives(result, user_answer, lives)
-        print(f"your score is {score}")
-        print(f"You have {lives} lives")
+        # user_answer = int(input(f"What is the sum of {num1} and {num2}? "))
+        # print(f"Your answer should be {result}")
+        # score = get_score(result, user_answer, score)
+        # lives = get_lives(result, user_answer, lives)
+        # print(f"your score is {score}")
+        # print(f"You have {lives} lives")
     if index == '-':
         result = num1 - num2
-        user_answer = int(
-            input(f"What is the difference of {num1} and {num2}? "))
-        print(f"Your answer should be {result}")
-        score = get_score(result, user_answer, score)
-        lives = get_lives(result, user_answer, lives)
-        print(f"your score is {score}")
-        print(f"You have {lives} lives")
+        # user_answer = int(
+        #     input(f"What is the difference of {num1} and {num2}? "))
+        # print(f"Your answer should be {result}")
+        # score = get_score(result, user_answer, score)
+        # lives = get_lives(result, user_answer, lives)
+        # print(f"your score is {score}")
+        # print(f"You have {lives} lives")
     if index == '*':
         result = num1 * num2
-        user_answer = int(input(f"What is the product of {num1} and {num2}? "))
-        score = get_score(result, user_answer, score)
-        lives = get_lives(result, user_answer, lives)
-        print(f"your score is {score}")
-        print(f"You have {lives} lives")
+        # user_answer = int(input(f"What is the product of {num1} and {num2}? "))
+        # score = get_score(result, user_answer, score)
+        # lives = get_lives(result, user_answer, lives)
+        # print(f"your score is {score}")
+        # print(f"You have {lives} lives")
     else:  # if index == '*':
         result = num1 // num2
-        user_answer = int(input(f"What {num1} divided by {num2}? "))
-        score = get_score(result, user_answer, score)
-        lives = get_lives(result, user_answer, lives)
-        print(f"your score is {score}")
-        print(f"You have {lives} lives")
+        # user_answer = int(input(f"What {num1} divided by {num2}? "))
+        # score = get_score(result, user_answer, score)
+        # lives = get_lives(result, user_answer, lives)
+        # print(f"your score is {score}")
+        # print(f"You have {lives} lives")
     # also return result, user_answer
     # returns question information & user answer & user score
-    question_info = [num1, num2, index, result,
-                     user_answer, score, lives]
+    question_info = [num1, num2, index, result]
     return question_info
     # function for user2
 
@@ -102,6 +100,3 @@ def game_start():
     update_endless(score)
 
     ###################### User 2 turn #########################
-
-
-game_start()
