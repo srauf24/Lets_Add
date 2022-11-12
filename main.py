@@ -366,11 +366,22 @@ while True:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_0:
-                    versusMode = True
+                if event.key == pygame.K_SPACE:
+                    if user_text != str(myArray[3]):
+                        print(user_text)
+                        print(str(myArray[0]) + " " + str(myArray[2]) + " " + str(myArray[1]))
+                        print(str(myArray[3]))
+                        Player1.lives = Player1.lives - 1
+                    myArray = get_question(Player1.character)
+                    qText = str(myArray[0]) + " " + str(myArray[2]) + " " + str(myArray[1]) + " = ?" 
+                    question = fontBold.render(qText, False, (0,0,0))
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sys.exit()
+                if (x.isnumeric() or x == "-") and len(user_text) < 2:
+                    user_text += x
+                if event.key == pygame.K_BACKSPACE:
+                    user_text = user_text[:-1]
 		
         fightingScreen.draw(screen)
         background3.idle()
@@ -387,6 +398,12 @@ while True:
             screen.blit(heart, (150 + (100*i), 800))
         for i in range(Player2.lives):
             screen.blit(heart, (900 + (100*i), 400))
+
+        screen.blit(box, (-100,-200))
+        screen.blit(answerBox, (700,380))
+        answerText = fontBold.render(user_text, False, (0,0,0))
+        screen.blit(answerText, (1025,700))
+        screen.blit(question, (300, 130))
         pygame.display.flip()
 
     while end:
