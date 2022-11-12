@@ -100,6 +100,7 @@ class Player():
 		self.character = "placeholder"
 		self.player = player
 		self.game_sprites = pygame.sprite.Group()
+		self.score = 0
 	def setCharacter(self, character, player):
 		self.character = character
 		if player == 1:

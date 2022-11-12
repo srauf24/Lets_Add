@@ -23,7 +23,7 @@ countdown_thread = threading.Thread(target=countdown)
 ################## get question function for user A ###################
 
 
-def get_question(character, score):
+def get_questionV(character, score):
     dog1operations = ['-', '*', '//', ]  # avoids addition
     dog2operations = ['+', '*', '//', ]  # avoid subtraction
     dog3operations = ['+', '-', '//', ]  # avoid multiplication
@@ -160,7 +160,7 @@ def game_start():
     countdown_thread.start()
     while my_timer > 0:
         # for i in range(0, 5):
-        question = get_question(character, score)
+        question = get_questionV(character, score)
         score = question[5]
         # index = '+'
 
@@ -202,5 +202,5 @@ def game_start2():
     user2_finalscore = final_score_user2(score)
 
 
-game_start()
-game_start2()
+# game_start()
+# game_start2()

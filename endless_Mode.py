@@ -3,10 +3,10 @@ from time import *
 from endless_score import update_endless
 
 def get_question(character):
-    dog1operations = ['-', '*', '//', ]  # avoids addition
-    dog2operations = ['+', '*', '//', ]  # avoid subtraction
-    dog3operations = ['+', '-', '//', ]  # avoid multiplication
-    dog4operations = ['+', '-', '*', ]  # avoid division
+    dog1operations = ['-', '*', '//']  # avoids addition
+    dog2operations = ['+', '*', '//']  # avoid subtraction
+    dog3operations = ['+', '-', '//']  # avoid multiplication
+    dog4operations = ['+', '-', '*']  # avoid division
     # note: excluded 0 bcs in division 0/5 causes error
     numbers1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -14,11 +14,11 @@ def get_question(character):
     num2 = random.choice(numbers2)
     if character == "Animations/SleepFoxAnimation":
         index = random.choice(dog1operations)
-    if character == "Animations/GoldieAnimation":
+    elif character == "Animations/GoldieAnimation":
         index = random.choice(dog2operations)
-    if character == "Animations/SilverSitAnimation":
+    elif character == "Animations/SilverSitAnimation":
         index = random.choice(dog3operations)
-    if character == "Animations/CatRunAnimation":
+    elif character == "Animations/CatRunAnimation":
         index = random.choice(dog4operations)
     # index = '+'  # testing purposes
     if index == '+':
@@ -29,7 +29,7 @@ def get_question(character):
         # lives = get_lives(result, user_answer, lives)
         # print(f"your score is {score}")
         # print(f"You have {lives} lives")
-    if index == '-':
+    elif index == '-':
         result = num1 - num2
         # user_answer = int(
         #     input(f"What is the difference of {num1} and {num2}? "))
@@ -38,14 +38,14 @@ def get_question(character):
         # lives = get_lives(result, user_answer, lives)
         # print(f"your score is {score}")
         # print(f"You have {lives} lives")
-    if index == '*':
+    elif index == '*':
         result = num1 * num2
         # user_answer = int(input(f"What is the product of {num1} and {num2}? "))
         # score = get_score(result, user_answer, score)
         # lives = get_lives(result, user_answer, lives)
         # print(f"your score is {score}")
         # print(f"You have {lives} lives")
-    else:  # if index == '*':
+    elif index == '//':
         result = num1 // num2
         # user_answer = int(input(f"What {num1} divided by {num2}? "))
         # score = get_score(result, user_answer, score)
@@ -54,7 +54,13 @@ def get_question(character):
         # print(f"You have {lives} lives")
     # also return result, user_answer
     # returns question information & user answer & user score
-    question_info = [num1, num2, index, result]
+    
+    question = str(num1) + " " + str(index) + " " + str(num2) + " = ?"
+    print("num1 is ",num1)
+    print("index is ", index)
+    print("num2 is ", num2)
+    print("result is " , result)
+    question_info = [question, result]
     return question_info
     # function for user2
 
