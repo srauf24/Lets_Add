@@ -59,44 +59,44 @@ def get_question(character):
     # function for user2
 
 
-def get_score(result, user_answer, score):
-    if result == user_answer:
-        score += 1
-    else:
-        score = score
-    return score
+# def get_score(result, user_answer, score):
+#     if result == user_answer:
+#         score += 1
+#     else:
+#         score = score
+#     return score
 
 
-def get_lives(result, user_answer, lives):
-    if result != user_answer:
-        lives -= 1
-    return lives
+# def get_lives(result, user_answer, lives):
+#     if result != user_answer:
+#         lives -= 1
+#     return lives
 
 
-# can be used later possibly to determine winner/losser/tiebreaker
-def final_score_user1(score):
-    return score
+# # can be used later possibly to determine winner/losser/tiebreaker
+# def final_score_user1(score):
+#     return score
 
 
-def game_start():
-    score = 0
-    lives = 3
-    character = input(
-        "User A enter character you would like to select: dog1, dog2, dog3, dog4: \n")
-    while character != 'dog1' and character != 'dog2' and character != 'dog3' and character != 'dog4':
-        character = input(
-            "Character does not exist, please re-enter your character: \n")
-    while lives > 0:
-        # for i in range(0, 5):
-        question = get_question(character, score, lives)
-        score = question[5]
-        lives = question[6]
-        # index = '+'
+# def game_start():
+#     score = 0
+#     lives = 3
+#     character = input(
+#         "User A enter character you would like to select: dog1, dog2, dog3, dog4: \n")
+#     while character != 'dog1' and character != 'dog2' and character != 'dog3' and character != 'dog4':
+#         character = input(
+#             "Character does not exist, please re-enter your character: \n")
+#     while lives > 0:
+#         # for i in range(0, 5):
+#         question = get_question(character, score, lives)
+#         score = question[5]
+#         lives = question[6]
+#         # index = '+'
 
-        # print(index)
-    # score = get_score(question[3], question[4], score)
-    print(f"User A, your final score is {score}")
-    user1_finalscore = final_score_user1(score)
-    update_endless(score)
+#         # print(index)
+#     # score = get_score(question[3], question[4], score)
+#     print(f"User A, your final score is {score}")
+#     user1_finalscore = final_score_user1(score)
+#     update_endless(score)
 
     ###################### User 2 turn #########################

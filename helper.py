@@ -116,6 +116,7 @@ class Player():
 			self.game_sprites.add(self.player2Animation) 
 
 box = pygame.transform.scale(pygame.image.load("Images/textBox.png"), (1300,800))
+answerBox = pygame.transform.scale(pygame.image.load("Images/textBox.png"), (800,800))
 heart = pygame.transform.scale(pygame.image.load("Images/heart.png"), (100,100))
 platform = pygame.transform.scale(pygame.image.load("Images/platform.png"), (800,800))
 sound = pygame.transform.scale(pygame.image.load("Images/sound.png"), (100,100))
