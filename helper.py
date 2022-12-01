@@ -10,7 +10,10 @@ fontSans = pygame.font.Font('Fonts/PixelSans.ttf', 20)
 displayStartText = fontSans.render("START SCREEN", False, (0, 0, 0))
 displaySettingText = fontSans.render("SETTINGS", False, (0, 0, 0))
 displayScoreText = fontSans.render("HIGH SCORE: ", False, (0, 0, 0))
-
+exp1 = "There are two different modes: Endless and Versus."
+exp2 = """In Endless mode, you need to get as many questions as you can correct. You will be asked math questions using basic operations (+, -, *, //). Press Q to start the sequence of questions and press space to submit your answer. 
+Each question answered correctly will increase your score which will at first look like this! \n\n\nWhenever you answer a question incorrectly, you'll lose a life which will inititially look like this. 
+\n\n\nIn Versus mode, you get to go up against your friend! Just like Endless mode, each player will have hearts and a score. However, whoever has the largest score is the winner!"""
 # Animations Class -- Finished logic
 # 	Takes care of all animations; characters and backgrounds
 class Animations(pygame.sprite.Sprite):
@@ -24,7 +27,7 @@ class Animations(pygame.sprite.Sprite):
 		list.sort()
 
 		for item in list[1:]:
-			if directory == "Animations/Background" or directory == "Animations/Background2" or directory == "Animations/Background3":
+			if directory == "Animations/Background" or directory == "Animations/Background2" or directory == "Animations/Background3" or directory == "Animations/Background4":
 				self.sprites.append(pygame.transform.scale(pygame.image.load(directory + '/' + item).convert(), (1400,900)))
 			else:
 				self.sprites.append(pygame.image.load(directory + '/' + item).convert())
@@ -86,14 +89,6 @@ class Button:
 				return True
 		return False
 
-
-# Image Button Class -- WIP
-# True button class
-class ImgButton():
-	def __init__(self, x, y, image):
-		self.image = image
-		self.rect = self.image.get_rect
-
 class Player():
 	def __init__(self, player):
 		self.lives = 3
@@ -116,16 +111,45 @@ class Player():
 				self.player2Animation = Animations(800, -60, character)
 			self.game_sprites.add(self.player2Animation) 
 
+def display_text(surface, text, pos, font, color):
+    collection = [word.split(' ') for word in text.splitlines()]
+    space = font.size(' ')[0]
+    x,y = pos
+    for lines in collection:
+        for words in lines:
+            word_surface = font.render(words, True, color)
+            word_width , word_height = word_surface.get_size()
+            if x + word_width >= 1100:
+                x = pos[0]
+                y += word_height
+            surface.blit(word_surface, (x,y))
+            x += word_width + space
+        x = pos[0]
+        y += word_height
+
+def comparison(x, y):
+	if x > y:
+		return 1
+	if y > x:
+		return 2
+	if x == y:
+		return 3
+
+score = pygame.transform.scale(pygame.image.load("Images/score.png").convert(), (93,39))
+health = pygame.transform.scale(pygame.image.load("Images/lives.png").convert(), (113,37))
 box = pygame.transform.scale(pygame.image.load("Images/textBox.png"), (1300,800))
 answerBox = pygame.transform.scale(pygame.image.load("Images/textBox.png"), (800,800))
 heart = pygame.transform.scale(pygame.image.load("Images/heart.png"), (100,100))
 platform = pygame.transform.scale(pygame.image.load("Images/platform.png"), (800,800))
-sound = pygame.transform.scale(pygame.image.load("Images/sound.png"), (100,100))
 mute = pygame.transform.scale(pygame.image.load("Images/mute.png"), (100,100))
 startText = Button((255, 255, 255), screen_width/2, screen_height/2, 100, 25, "Start")
 settingText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 100, 25, "Settings")
-returnText = Button((255, 255, 0), 1200, 100, 100, 25, "Return")
-volumeText = Button((255, 255, 0), 650, 500, 100, 25, "Volume")
+returnText = Button((255, 255, 255), 1200, 100, 100, 25, "Return")
+volumeText = Button((255, 255, 255), screen_width/2, screen_height/2, 100, 25, "Volume")
+howToText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 130, 25, "How to Play")
 quitText = Button((255, 255, 255), screen_width/2, screen_height/2 + 100, 100, 25, "Quit")
 endlessText = Button((255, 255, 255), screen_width/2, screen_height/2, 150, 25, "Endless Mode")
 versusText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 150, 25, "Versus Mode")
+playAgain = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 150, 25, "Play Again?")
+same = Button((255, 255, 255), screen_width/2 - 150, screen_height/2 + 100, 200, 25, "Same Characters")
+change = Button((255, 255, 255), screen_width/2 + 150, screen_height/2 + 100, 220, 25, "Change Characters")

@@ -19,8 +19,8 @@ from pygame.locals import (
 pygame.init()
 clock = pygame.time.Clock()
 pygame.font.init()
-HS_FILE = open('versus_highscore.txt', 'r')
-HS_FILE_2 = open('endless_highscore.txt', 'r')
+# HS_FILE = open('versus_highscore.txt', 'r')
+# HS_FILE_2 = open('endless_highscore.txt', 'r')
 
 # Game Screen
 screen_width = 1400
@@ -52,8 +52,8 @@ background2 = Animations(0,0, 'Animations/Background2')
 choosingCharacterScreen.add(background2)
 
 fightingScreen = pygame.sprite.Group()
-background3 = Animations(0,0, 'Animations/Background3')
-fightingScreen.add(background3)
+background4 = Animations(0,0, 'Animations/Background4')
+fightingScreen.add(background4)
 
 # Start Screen
 start = True
@@ -68,6 +68,7 @@ amountofPlayers = 0
 # Setting Screen
 setting = False
 displaySettingText = fontBold.render("SETTINGS", False, (0, 0, 0))
+HowToPlay = False
 
 # Choosing Character Screen
 choosing1 = False
@@ -85,9 +86,9 @@ versusMode = False
 
 # End Screen
 end = False
-
-# WIP
-displayyWIP = fontSans.render("WORK IN PROGRESS", False, (255, 255, 255))
+end1 = False
+end2 = False
+again = False
 
 question = fontBold.render("Press Q", False, (0,0,0))
 user_text = ""
@@ -123,7 +124,6 @@ while True:
                     pygame.quit()
                     sys.exit()
 
-        screen.fill((255, 255, 255))
         startScreen.draw(screen)
         startScreen.update(0.1)
         background.idle()
@@ -148,14 +148,14 @@ while True:
                     print("Escape is pressed")
                     pygame.quit()
                     sys.exit()
-                if event.key == pygame.K_0:
-                    start = True
-                    setting = False
+                if event.key == pygame.K_0 and HowToPlay == True:
+                    HowToPlay = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if returnText.isOver(pos):
                     print("Return is pressed")
-                    setting = False
+                    HowToPlay = False
                     start = True
+                    setting = False
                 if volumeText.isOver(pos):
                     if volume_flag:
                         print("Volume is muted")
@@ -167,13 +167,25 @@ while True:
                         mixer.music.set_volume(0.3)
                         setting = True
                         volume_flag = True
+                if howToText.isOver(pos):
+                    HowToPlay = True
                 
 
-        screen.fill((255, 255, 0))
-        screen.blit(sound, (650, 550))
+        startScreen.draw(screen)
+        startScreen.update(0.1)
         screen.blit(displaySettingText, (screen_width / 2 - displaySettingText.get_width() / 2, 50))
-        returnText.draw(screen, (255, 255, 0))
-        volumeText.draw(screen, (255, 255, 0))
+        returnText.draw(screen, (255, 255, 255))
+        volumeText.draw(screen, (255, 255, 255))
+        howToText.draw(screen, (255,255,255))
+        if HowToPlay:
+            pygame.draw.rect(screen, (255,255,255), (200, 100, 900, 700))
+            pygame.draw.rect(screen, (0,0,0), (200, 100, 900, 700), 3)
+            display_text(screen, exp1, (220, 120), fontSans, (0,0,0))
+            display_text(screen, exp2, (220, 200), fontSans, (0,0,0))
+            screen.blit(health, (550, 430))
+            screen.blit(score, (550, 310))
+        
+
         pygame.display.flip()
 
 	# Player Mode Screen -- WIP
@@ -184,22 +196,24 @@ while True:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_0:
-                    playerMode = False
-                    choosing = True
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if endlessText.isOver(pos):
                     print("Endless is pressed")
                     choosing1 = True
+                    end1 = True
                     endlessMode = True
                     amountofPlayers = 1
                     playerMode = False
                 if versusText.isOver(pos):
                     print("Versus is pressed")
                     choosing1 = True
+                    end2 = True
                     versusMode = True
                     amountofPlayers = 2
+                    playerMode = False
+                if returnText.isOver(pos):
+                    print("Return was pressed")
+                    start = True
                     playerMode = False
 
 	
@@ -208,13 +222,15 @@ while True:
         background2.update(0.1)
         endlessText.draw(screen, (255,255,255))
         versusText.draw(screen, (255,255,255))
+        returnText.draw(screen, (255,255,255))
         pygame.display.flip()
         clock.tick(240)
 
 	# Choosing Character Screen -- WIP
 	# 	Incomplete logic / Complete GUI
-    voiceover = mixer.Sound('Sounds/choose.mp3')
-    voiceover.play()
+    if not start:
+        voiceover = mixer.Sound('Sounds/choose.mp3')
+        voiceover.play()
     while choosing1:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -323,6 +339,14 @@ while True:
                 if event.key == pygame.K_SPACE:
                     if user_text != str(myArray[1]):
                         Player1.lives = Player1.lives - 1
+                        if Player1.lives == 0:
+                            fileE = open('endless_highscore.txt', 'w')
+                            fileE.write(str(Player1.score))
+                            fileE.close()
+                            end = True
+                            endlessMode = False
+                    elif user_text == str(myArray[1]):
+                            Player1.score += 100
                     user_text = ""
                     myArray = get_question(Player1.character)
                     qText = myArray[0] 
@@ -338,8 +362,8 @@ while True:
                 
 
         fightingScreen.draw(screen)
-        background3.idle()
-        background3.update(0.1)
+        background4.idle()
+        background4.update(0.1)
         screen.blit(platform, (-60, 450))
         Player1.game_sprites.draw(screen)
         Player1.game_sprites.update(0.1)
@@ -351,6 +375,7 @@ while True:
         answerText = fontBold.render(user_text, False, (0,0,0))
         screen.blit(answerText, (1025,700))
         screen.blit(question, (300, 130))
+        screen.blit(fontBold.render(str(Player1.score), False, (255,255,255)), (550, 800))
 
         pygame.display.flip()
 
@@ -394,6 +419,9 @@ while True:
                         qText = myArray[0] 
                         question = fontBold.render(qText, False, (0,0,0))
                         amountQ -= 1
+                    elif(amountQ == 0):
+                        end = True
+                        versusMode = False
                 x = event.unicode
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
@@ -404,8 +432,8 @@ while True:
                     user_text = user_text[:-1]
 		
         fightingScreen.draw(screen)
-        background3.idle()
-        background3.update(0.15)
+        background4.idle()
+        background4.update(0.15)
         screen.blit(platform, (-60, 450))
         screen.blit(platform, (700, 50))
         Player1.game_sprites.draw(screen)
@@ -423,14 +451,15 @@ while True:
         screen.blit(answerBox, (700,380))
         answerText = fontBold.render(user_text, False, (0,0,0))
         screen.blit(answerText, (1025,700))
-        screen.blit(question, (300, 130))
-        screen.blit(fontBold.render(str(Player1.score), False, (0,0,0)), (550, 800))
-        screen.blit(fontBold.render(str(Player2.score), False, (0,0,0)), (1250, 400))
+        screen.blit(question, (225, 130))
+        screen.blit(fontBold.render(str(Player1.score), False, (255,255,255)), (550, 800))
+        screen.blit(fontBold.render(str(Player2.score), False, (255,255,255)), (1225, 400))
         
         pygame.display.flip()
 
     while end:
         for event in pygame.event.get():
+                pos = pygame.mouse.get_pos()
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
@@ -438,10 +467,41 @@ while True:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()
                         sys.exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if playAgain.isOver(pos):
+                        print("Again was pressed")
+                        Player1.score = 0
+                        Player1.lives = 3
+                        Player2.score = 0
+                        start = True
+                        end = False
+                    #     again = True
+                    # if same.isOver(pos):
+                    #      Player1.score = 0 
+                    #      Player1.lives = 3
+                    #      endless = True
+                    #      again = False
+                    #      end = False
 
-        screen.fill((0,0,0))
-        screen.blit(displayyWIP, ((screen_width/2) - (displayChoosingText.get_width()/2), (screen_height/2) - (displayChoosingText.get_height()/2)))
+        startScreen.draw(screen)
+        startScreen.update(0.1)
+        if end1:
+            end1Text = fontSans.render("Your High Score was: " + str(Player1.score), False, (0,0,0))
+            screen.blit(end1Text, (screen_width/2 - end1Text.get_width(), screen_height/2 - end1Text.get_height()))
+            # if again:
+            #     same.draw(screen, (255,255,255))
+            #     change.draw(screen, (255,255,255))
+        if end2:
+            x = comparison(Player1.score, Player2.score)
+            if x == 1: 
+                end2Text = fontSans.render("The winner is Player 1 with a highscore of: " + str(Player1.score) + "!", False, (0,0,0))
+            if x == 2:
+                end2Text = fontSans.render("The winner is Player 2 with a highscore of: " + str(Player2.score) + "!", False, (0,0,0))
+            if x == 3:
+                end2Text = fontSans.render("It's a tie!", False, (0,0,0))
+            screen.blit(end2Text, (screen_width/2 - end2Text.get_width(), screen_height/2 - end2Text.get_height()))
+            
+        playAgain.draw(screen, (255,255,255))
         pygame.display.flip()
-        clock.tick(240)
 
 pygame.quit()
