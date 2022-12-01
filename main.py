@@ -401,26 +401,33 @@ while True:
                         print("Player 1 amount left: ", amountQ//2)
                         if user_text != str(myArray[1]):
                             Player1.lives = Player1.lives - 1
+                            if Player1.lives == 0:
+                                amountQ = 11
                         elif user_text == str(myArray[1]):
                             Player1.score += 100
-                        user_text = ""
-                        myArray = get_question(Player1.character)
-                        qText = myArray[0] 
-                        question = fontBold.render(qText, False, (0,0,0))
+                        if(amountQ > 10):
+                            user_text = ""
+                            myArray = get_question(Player1.character)
+                            qText = myArray[0] 
+                            question = fontBold.render(qText, False, (0,0,0))
                         amountQ -= 1
                     elif(amountQ > 0 and amountQ <= 10):
                         print("Player 2 amount left: ", amountQ)
                         if user_text != str(myArray[1]):
                             Player2.lives = Player2.lives - 1
+                            if Player2.lives == 0:
+                                amountQ = 0
                         elif user_text == str(myArray[1]):
                             Player2.score += 100
-                        user_text = ""
-                        myArray = get_question(Player2.character)
-                        qText = myArray[0] 
-                        question = fontBold.render(qText, False, (0,0,0))
-                        amountQ -= 1
+                        if amountQ > 0 and amountQ <= 10:
+                            user_text = ""
+                            myArray = get_question(Player2.character)
+                            qText = myArray[0] 
+                            question = fontBold.render(qText, False, (0,0,0))
+                            amountQ -= 1
                     elif(amountQ == 0):
                         end = True
+                        print("this happened")
                         versusMode = False
                 x = event.unicode
                 if event.key == pygame.K_ESCAPE:
