@@ -29,8 +29,6 @@ screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE
 mixer.music.load("Sounds/persona5.mp3")
 mixer.music.play()
 mixer.music.set_volume(0.3)
-cow = True
-chicken = True
 
 # Creating the sprites and groups
 moving_sprites = pygame.sprite.Group()
@@ -432,8 +430,7 @@ while True:
                             question = fontBold.render(qText, False, (0,0,0))
                             amountQ -= 1
                     elif(amountQ == 0):
-                        end = True
-                        print("this happened")
+                        end = Tru
                         versusMode = False
                 x = event.unicode
                 if event.key == pygame.K_ESCAPE:
