@@ -7,6 +7,7 @@ screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE
 fontBold = pygame.font.Font('Fonts/PixelBold.ttf', 80)
 fontMono = pygame.font.Font('Fonts/PixelMono.ttf', 20)
 fontSans = pygame.font.Font('Fonts/PixelSans.ttf', 20)
+fontSansB = pygame.font.Font('Fonts/PixelSans.ttf', 50)
 displayStartText = fontSans.render("START SCREEN", False, (0, 0, 0))
 displaySettingText = fontSans.render("SETTINGS", False, (0, 0, 0))
 displayScoreText = fontSans.render("HIGH SCORE: ", False, (0, 0, 0))

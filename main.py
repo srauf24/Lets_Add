@@ -90,10 +90,16 @@ again = False
 
 question = fontBold.render("Press Q", False, (0,0,0))
 font_size = pygame.font.Font(None, 75)
-score = font_size.render("Highscore: ", False, (0,0,0))
+score = fontSansB.render("Highscore: ", False, (255,255,255))
 user_text = ""
 turn = 1
 amountQ = 20
+
+with open("endless_highscore.txt") as f:
+    highScore = f.read()[:-1]
+    print(type(highScore))
+    scoreText = fontSansB.render(highScore, False, (0,0,0))
+
 
 while True:
 
@@ -340,7 +346,9 @@ while True:
                         Player1.lives = Player1.lives - 1
                         if Player1.lives == 0:
                             fileE = open('endless_highscore.txt', 'w')
-                            fileE.write(str(Player1.score))
+                            if Player1.score > int(highScore):
+                                scoreText = fontSansB.render(str(Player1.score), False, (0,0,0))
+                                fileE.write(str(Player1.score))
                             fileE.close()
                             end = True
                             endlessMode = False
@@ -375,8 +383,6 @@ while True:
         screen.blit(answerText, (1025,700))
         screen.blit(question, (300, 130))
         screen.blit(score, (950, 0))
-        with open("endless_highscore.txt") as f:
-            scoreText = font_size.render(f.read(), True, (0,0,0))
         screen.blit(scoreText, (1235, 0))
         screen.blit(fontBold.render(str(Player1.score), False, (255,255,255)), (550, 800))
 
@@ -430,7 +436,13 @@ while True:
                             question = fontBold.render(qText, False, (0,0,0))
                             amountQ -= 1
                     elif(amountQ == 0):
-                        end = Tru
+                        fileV = open('versus_highscore.txt', 'w')
+                        if Player1.score >= Player2.score:
+                            fileV.write(str(Player1.score))
+                        elif Player2.score >= Player1.score:
+                            fileV.write(str(Player2.score))
+                        fileV.close()
+                        end = True
                         versusMode = False
                 x = event.unicode
                 if event.key == pygame.K_ESCAPE:
@@ -462,12 +474,6 @@ while True:
         answerText = fontBold.render(user_text, False, (0,0,0))
         screen.blit(answerText, (1025,700))
         screen.blit(question, (225, 130))
-        fileV = open('versus_highscore.txt', 'w')
-        if Player1.score >= Player2.score:
-            fileV.write(str(Player1.score))
-        elif Player2.score >= Player1.score:
-            fileV.write(str(Player2.score))
-        fileV.close()
         screen.blit(fontBold.render(str(Player1.score), False, (255,255,255)), (550, 800))
         screen.blit(fontBold.render(str(Player2.score), False, (255,255,255)), (1225, 400))
         
