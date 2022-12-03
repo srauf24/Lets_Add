@@ -1,4 +1,5 @@
 import pygame, sys, os
+from os import path
 
 # Working on implementing score WIP
 def update_versus(score):
