@@ -96,9 +96,11 @@ turn = 1
 amountQ = 20
 
 with open("endless_highscore.txt") as f:
-    highScore = f.read()[:-1]
-    print(type(highScore))
-    scoreText = fontSansB.render(highScore, False, (0,0,0))
+    highScoreE = f.read()
+    scoreText = fontSansB.render(highScoreE, False, (0,0,0))
+
+with open("versus_highscore.txt") as g:
+    highScoreV = g.read()
 
 
 while True:
@@ -346,7 +348,7 @@ while True:
                         Player1.lives = Player1.lives - 1
                         if Player1.lives == 0:
                             fileE = open('endless_highscore.txt', 'w')
-                            if Player1.score > int(highScore):
+                            if Player1.score > int(highScoreE):
                                 scoreText = fontSansB.render(str(Player1.score), False, (0,0,0))
                                 fileE.write(str(Player1.score))
                             fileE.close()
@@ -436,12 +438,13 @@ while True:
                             question = fontBold.render(qText, False, (0,0,0))
                             amountQ -= 1
                     elif(amountQ == 0):
-                        fileV = open('versus_highscore.txt', 'w')
-                        if Player1.score >= Player2.score:
-                            fileV.write(str(Player1.score))
-                        elif Player2.score >= Player1.score:
-                            fileV.write(str(Player2.score))
-                        fileV.close()
+                        if Player1.score > int(highScoreV) or Player2.score > int(highScoreV):
+                            fileV = open('versus_highscore.txt', 'w')
+                            if Player1.score >= Player2.score:
+                                fileV.write(str(Player1.score))
+                            elif Player2.score >= Player1.score:
+                                fileV.write(str(Player2.score))
+                            fileV.close()
                         end = True
                         versusMode = False
                 x = event.unicode
