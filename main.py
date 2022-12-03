@@ -498,6 +498,7 @@ while True:
                         print("Again was pressed")
                         Player1.score = 0
                         Player1.lives = 3
+                        Player2.lives = 3
                         Player2.score = 0
                         start = True
                         end = False
