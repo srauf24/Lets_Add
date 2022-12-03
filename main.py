@@ -495,22 +495,14 @@ while True:
                         Player2.score = 0
                         start = True
                         end = False
-                    #     again = True
-                    # if same.isOver(pos):
-                    #      Player1.score = 0 
-                    #      Player1.lives = 3
-                    #      endless = True
-                    #      again = False
-                    #      end = False
+
 
         startScreen.draw(screen)
         startScreen.update(0.1)
         if end1:
             end1Text = fontSans.render("Your High Score was: " + str(Player1.score), False, (0,0,0))
-            screen.blit(end1Text, (screen_width/2 - end1Text.get_width(), screen_height/2 - end1Text.get_height()))
-            # if again:
-            #     same.draw(screen, (255,255,255))
-            #     change.draw(screen, (255,255,255))
+            screen.blit(end1Text, (screen_width/2 - end1Text.get_width()/2, screen_height/2 - end1Text.get_height()))
+
         if end2:
             x = comparison(Player1.score, Player2.score)
             if x == 1: 
@@ -519,7 +511,7 @@ while True:
                 end2Text = fontSans.render("The winner is Player 2 with a highscore of: " + str(Player2.score) + "!", False, (0,0,0))
             if x == 3:
                 end2Text = fontSans.render("It's a tie!", False, (0,0,0))
-            screen.blit(end2Text, (screen_width/2 - end2Text.get_width(), screen_height/2 - end2Text.get_height()))
+            screen.blit(end2Text, (screen_width/2 - end2Text.get_width()/2, screen_height/2 - end2Text.get_height()))
             
         playAgain.draw(screen, (255,255,255))
         pygame.display.flip()

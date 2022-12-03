@@ -150,6 +150,6 @@ howToText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 130, 2
 quitText = Button((255, 255, 255), screen_width/2, screen_height/2 + 100, 100, 25, "Quit")
 endlessText = Button((255, 255, 255), screen_width/2, screen_height/2, 150, 25, "Endless Mode")
 versusText = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 150, 25, "Versus Mode")
-playAgain = Button((255, 255, 255), screen_width/2, screen_height/2 + 50, 150, 25, "Play Again?")
+playAgain = Button((255, 255, 255), screen_width/2 - 80, screen_height/2 + 25, 150, 25, "Play Again?")
 same = Button((255, 255, 255), screen_width/2 - 150, screen_height/2 + 100, 200, 25, "Same Characters")
 change = Button((255, 255, 255), screen_width/2 + 150, screen_height/2 + 100, 220, 25, "Change Characters")
