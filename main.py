@@ -347,11 +347,11 @@ while True:
                     if user_text != str(myArray[1]):
                         Player1.lives = Player1.lives - 1
                         if Player1.lives == 0:
-                            fileE = open('endless_highscore.txt', 'w')
                             if Player1.score > int(highScoreE):
+                                fileE = open('endless_highscore.txt', 'w')
                                 scoreText = fontSansB.render(str(Player1.score), False, (0,0,0))
                                 fileE.write(str(Player1.score))
-                            fileE.close()
+                                fileE.close()
                             end = True
                             endlessMode = False
                     elif user_text == str(myArray[1]):
@@ -500,6 +500,10 @@ while True:
                         Player1.lives = 3
                         Player2.lives = 3
                         Player2.score = 0
+                        amountQ = 20
+                        amountofPlayers = 0
+                        end1 = False
+                        end2 = False
                         start = True
                         end = False
 
@@ -510,7 +514,7 @@ while True:
             end1Text = fontSans.render("Your High Score was: " + str(Player1.score), False, (0,0,0))
             screen.blit(end1Text, (screen_width/2 - end1Text.get_width()/2, screen_height/2 - end1Text.get_height()))
 
-        if end2:
+        if end2: 
             x = comparison(Player1.score, Player2.score)
             if x == 1: 
                 end2Text = fontSans.render("The winner is Player 1 with a highscore of: " + str(Player1.score) + "!", False, (0,0,0))
