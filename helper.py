@@ -11,10 +11,10 @@ fontSansB = pygame.font.Font('Fonts/PixelSans.ttf', 50)
 displayStartText = fontSans.render("START SCREEN", False, (0, 0, 0))
 displaySettingText = fontSans.render("SETTINGS", False, (0, 0, 0))
 displayScoreText = fontSans.render("HIGH SCORE: ", False, (0, 0, 0))
-exp1 = "There are two different modes: Endless and Versus."
-exp2 = """In Endless mode, you need to get as many questions as you can correct. You will be asked math questions using basic operations (+, -, *, //). Press Q to start the sequence of questions, enter your numeric answer, and press space to submit. 
+exp1 = "Each character has its own mystery power in which they can avoid a specific arithemtic operation!\n\nThere are two different modes: Endless and Versus." 
+exp2 = """\nIn Endless mode, you need to get as many questions as you can correct. You will be asked math questions using basic operations (+, -, *, //). Press Q to start the sequence of questions, enter your numeric answer, and press space to submit. 
 Each question answered correctly will increase your score which will at first look like this! \n\n\nWhenever you answer a question incorrectly, you'll lose a life which will inititially look like this. 
-\n\n\nIn Versus mode, you get to go up against your friend! Just like Endless mode, each player will have hearts and a score. However, whoever has the largest score is the winner!"""
+\n\n\nIn Versus mode, you get to go up against your friend! Just like Endless mode, each player will have hearts and a score. The player who has the largest score is the winner! In the case that both players have the same score, a draw will be declared."""
 # Animations Class -- Finished logic
 # 	Takes care of all animations; characters and backgrounds
 class Animations(pygame.sprite.Sprite):
