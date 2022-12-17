@@ -19,8 +19,6 @@ from pygame.locals import (
 pygame.init()
 clock = pygame.time.Clock()
 pygame.font.init()
-# HS_FILE = open('versus_highscore.txt', 'r')
-# HS_FILE_2 = open('endless_highscore.txt', 'r')
 
 # Game Screen
 screen_width = 1400
@@ -105,37 +103,36 @@ with open("versus_highscore.txt") as g:
 
 while True:
 
-    # Start Screen -- WIP
-    # 	Finished logic / Incomplete GUI
+    # Functional Requirement 3.2.3 
+    # Functional Requirement 3.2.22 cont.
+    # Start Screen
+    # 	Finished logic / Complete GUI
     while start:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
+            # Functional Requirement 3.2.23
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    print("Escape is pressed")
                     pygame.quit()
                     sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if startText.isOver(pos):
-                    print("Start is pressed")
                     start = False
                     playerMode = True
                 if settingText.isOver(pos):
-                    print("Settings is pressed")
                     setting = True
                     start = False
                 if quitText.isOver(pos):
-                    print("Quit is pressed")
                     pygame.quit()
                     sys.exit()
 
         startScreen.draw(screen)
         startScreen.update(0.1)
         background.idle()
-        startText.draw(screen, (255, 255, 255))
+        startText.draw(screen, (255, 255, 255))                 
         settingText.draw(screen, (255, 255, 255))
         quitText.draw(screen, (255, 255, 255))
         pygame.display.flip()
@@ -143,6 +140,7 @@ while True:
         
     # Settings Screen -- Finished Logic
     volume_flag = True
+    # Functional Requirement 3.2.16
     while setting:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -151,28 +149,27 @@ while True:
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    print("Escape is pressed")
                     pygame.quit()
                     sys.exit()
                 if event.key == pygame.K_0 and HowToPlay == True:
                     HowToPlay = False
             if event.type == pygame.MOUSEBUTTONDOWN:
+                # Functional Requirement 3.2.19
                 if returnText.isOver(pos):
-                    print("Return is pressed")
                     HowToPlay = False
                     start = True
                     setting = False
+                # Functional Requirement 3.2.17
                 if volumeText.isOver(pos):
                     if volume_flag:
-                        print("Volume is muted")
                         mixer.music.set_volume(0.0)
                         setting = True
                         volume_flag = False
-                    elif not volume_flag:
-                        print("Volume is unmuted")  
+                    elif not volume_flag:  
                         mixer.music.set_volume(0.3)
                         setting = True
                         volume_flag = True
+                # Functional Requirement 3.2.18
                 if howToText.isOver(pos):
                     HowToPlay = True
                 
@@ -183,6 +180,7 @@ while True:
         returnText.draw(screen, (255, 255, 255))
         volumeText.draw(screen, (255, 255, 255))
         howToText.draw(screen, (255,255,255))
+        # Functional Requirement 3.2.18 cont.
         if HowToPlay:
             pygame.draw.rect(screen, (255,255,255), (200, 100, 900, 700))
             pygame.draw.rect(screen, (0,0,0), (200, 100, 900, 700), 3)
@@ -194,8 +192,9 @@ while True:
 
         pygame.display.flip()
 
-	# Player Mode Screen -- WIP
-	# 	Finished logic / Incomplete GUI
+    # Functional Requirement 3.2.4
+	# Player Mode Screen
+	# 	Finished logic / Complete GUI
     while playerMode:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -204,21 +203,18 @@ while True:
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if endlessText.isOver(pos):
-                    print("Endless is pressed")
                     choosing1 = True
                     end1 = True
                     endlessMode = True
                     amountofPlayers = 1
                     playerMode = False
                 if versusText.isOver(pos):
-                    print("Versus is pressed")
                     choosing1 = True
                     end2 = True
                     versusMode = True
                     amountofPlayers = 2
                     playerMode = False
                 if returnText.isOver(pos):
-                    print("Return was pressed")
                     start = True
                     playerMode = False
 
@@ -232,11 +228,14 @@ while True:
         pygame.display.flip()
         clock.tick(240)
 
-	# Choosing Character Screen -- WIP
-	# 	Incomplete logic / Complete GUI
+
     if not start:
         voiceover = mixer.Sound('Sounds/choose.mp3')
         voiceover.play()
+    
+    # Functional Requirement 3.2.5a
+	# Choosing Character Screen
+	# 	Complete logic / Complete GUI
     while choosing1:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -273,6 +272,7 @@ while True:
         background2.update(0.05)
         screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
         screen.blit(displayPlayerChoosing1, (screen_width/2 - displayPlayerChoosing1.get_width()/2,150))
+        # Functional Requirement 3.2.6
         moving_sprites.draw(screen)
         moving_sprites.update(0.05)
         sleepFox.idle()
@@ -282,6 +282,7 @@ while True:
         pygame.display.flip()
         clock.tick(240)
 
+    # Functional Requirement 3.2.5b
     while choosing2:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
@@ -317,6 +318,7 @@ while True:
         background2.update(0.1)
         screen.blit(displayChoosingText, (screen_width/2 - displayChoosingText.get_width()/2,50))
         screen.blit(displayPlayerChoosing2, (screen_width/2 - displayPlayerChoosing2.get_width()/2,150))
+        # Functional Requirement 3.2.6
         moving_sprites.draw(screen)
         moving_sprites.update(0.05)
         sleepFox.idle()
@@ -326,9 +328,9 @@ while True:
         pygame.display.flip()
         clock.tick(240)
 
+    # Functional Requirement 3.2.7
 	# Endless Mode Screen
-	# 	Incomplete logic / Incomplete GUI
-    # Added different background music
+	# 	Complete logic / Complete GUI
     mixer.music.unload()
     mixer.music.load("Sounds/maplestory1.mp3")
     mixer.music.stop()
@@ -343,7 +345,9 @@ while True:
                     myArray = get_question(Player1.character)
                     qText = myArray[0]
                     question = fontBold.render(qText, False, (0,0,0))
+                # Functional Requirement 3.2.8
                 if event.key == pygame.K_SPACE:
+                    # Functional Requirement 3.2.8b
                     if user_text != str(myArray[1]):
                         Player1.lives = Player1.lives - 1
                         if Player1.lives == 0:
@@ -354,6 +358,7 @@ while True:
                                 fileE.close()
                             end = True
                             endlessMode = False
+                    # Functional Requirement 3.2.8a
                     elif user_text == str(myArray[1]):
                             Player1.score += 100
                     user_text = ""
@@ -390,10 +395,9 @@ while True:
 
         pygame.display.flip()
 
-
+    # Functional Requirement 3.2.10
 	# Versus Mode Screen
-	# 	Incomplete logic / Incomplete GUI
-    # Added different background music
+	# 	Complete logic / Complete GUI
     mixer.music.unload()
     mixer.music.load("Sounds/maplestory2.mp3")
     mixer.music.stop()
@@ -408,6 +412,8 @@ while True:
                     myArray = get_question(Player1.character)
                     qText = myArray[0]
                     question = fontBold.render(qText, False, (0,0,0))
+
+                # Functional Requirement 3.2.11
                 if event.key == pygame.K_SPACE:
                     if(amountQ > 10):
                         print("Player 1 amount left: ", amountQ//2)
@@ -415,6 +421,7 @@ while True:
                             Player1.lives = Player1.lives - 1
                             if Player1.lives == 0:
                                 amountQ = 11
+                        # Functional Requirement 3.2.12
                         elif user_text == str(myArray[1]):
                             Player1.score += 100
                         if(amountQ > 10):
@@ -423,6 +430,7 @@ while True:
                             qText = myArray[0] 
                             question = fontBold.render(qText, False, (0,0,0))
                         amountQ -= 1
+                    # Functional Requirement 3.2.13
                     elif(amountQ > 0 and amountQ <= 10):
                         print("Player 2 amount left: ", amountQ)
                         if user_text != str(myArray[1]):
@@ -477,11 +485,14 @@ while True:
         answerText = fontBold.render(user_text, False, (0,0,0))
         screen.blit(answerText, (1025,700))
         screen.blit(question, (225, 130))
+        # Functional Requirement 3.2.14
         screen.blit(fontBold.render(str(Player1.score), False, (255,255,255)), (550, 800))
         screen.blit(fontBold.render(str(Player2.score), False, (255,255,255)), (1225, 400))
         
         pygame.display.flip()
 
+	# End Screen
+	# 	Complete logic / Complete GUI
     while end:
         for event in pygame.event.get():
                 pos = pygame.mouse.get_pos()
@@ -493,9 +504,9 @@ while True:
                         pygame.quit()
                         sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    # Functional Requirement 3.2.22
                     if playAgain.isOver(pos):
                         mixer.music.unload()
-                        print("Again was pressed")
                         Player1.score = 0
                         Player1.lives = 3
                         Player2.lives = 3
@@ -510,10 +521,14 @@ while True:
 
         startScreen.draw(screen)
         startScreen.update(0.1)
+        # Functional Requirement 3.2.9
+        # Functional Requirement 3.2.20
         if end1:
             end1Text = fontSans.render("Your High Score was: " + str(Player1.score), False, (0,0,0))
             screen.blit(end1Text, (screen_width/2 - end1Text.get_width()/2, screen_height/2 - end1Text.get_height()))
 
+        # Functional Requirement 3.2.15
+        # Functional Requirement 3.2.21
         if end2: 
             x = comparison(Player1.score, Player2.score)
             if x == 1: 
